@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
     public function index($name){
-        return view('frontend.product');
+        $product = Product::whereSlug($name)->firstOrFail();
+        $categories = $product->categories()->distinct()->get();
+        return view('frontend.product-detail',compact('product','categories'));
     }
 }

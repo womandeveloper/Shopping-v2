@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class CategoryTableSeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
         DB::table('category')->truncate();
         $id = DB::table('category')->insertGetId(['category_name'=>'Elektronik','slug'=>'elektronik']);
         DB::table('category')->insert(['category_name'=>'Bilgisayar/Tablet','slug'=>'bilgisayar-tablet','parent_id'=>$id]);
@@ -32,5 +34,6 @@ class CategoryTableSeeder extends Seeder
         DB::table('category')->insert(['category_name'=>'Kişisel Bakım','slug'=>'kisisel-bakim']);
         DB::table('category')->insert(['category_name'=>'Giyim ve Moda','slug'=>'giyim-moda']);
         DB::table('category')->insert(['category_name'=>'Anne ve çocuk','slug'=>'anne-cocuk']);
+        Schema::enableForeignKeyConstraints();
     }
 }

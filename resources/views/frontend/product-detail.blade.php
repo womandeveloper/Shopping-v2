@@ -87,9 +87,7 @@
                             <span class="new-price new-price-2">${{ $product->price }}</span>
                         </div>
                         <div class="product-desc">
-                            <p>
-                                <span>{{ $product->description }}</span>
-                            </p>
+                            <p><span>{{ $product->description }}</span></p>
                         </div>
                         <div class="product-variants">
                             <div class="produt-variants-size">
