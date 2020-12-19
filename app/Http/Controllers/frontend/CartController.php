@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function index(){
-        return view('frontend.shopping-card');
+        $all_categories = Category::all();
+        return view('frontend.shopping-card',compact('all_categories'));
     }
 }

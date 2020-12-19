@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class PaymentController extends Controller
 {
     public function index(){
-        return view('frontend.payment');
+        $all_categories = Category::all();
+        return view('frontend.payment',compact('all_categories'));
     }
 }

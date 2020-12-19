@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function index(){
-        return view('frontend.order');
+        $all_categories = Category::all();
+        return view('frontend.order',compact('all_categories'));
     }
 }

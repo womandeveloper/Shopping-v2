@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function sign_in(){
-        return view('frontend.signin');
+        $all_categories = Category::all();
+        return view('frontend.signin',compact('all_categories'));
     }
     public function sign_up(){
         return view('frontend.signup');

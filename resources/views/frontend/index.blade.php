@@ -1,6 +1,9 @@
 @extends('frontend.layouts.master')
 @section('title', 'Ana Sayfa')
 @section('content')
+@php
+    $img_banner = "/frontend/images/banner";
+@endphp
 <div class="slider-with-banner">
     <div class="container">
         <div class="row">
@@ -138,45 +141,19 @@
             <div class="col-lg-9">
                 <div class="slider-area pt-sm-30 pt-xs-30">
                     <div class="slider-active owl-carousel">
-                        <!-- Begin Single Slide Area -->
+                        @foreach($product_slider as $index => $detail)
                         <div class="single-slide align-center-left animation-style-02 bg-4">
                             <div class="slider-progress"></div>
                             <div class="slider-content">
-                                <h5>Sale Offer <span>-20% Off</span> This Week</h5>
-                                <h2>Chamcham Galaxy S9 | S9+</h2>
-                                <h3>Starting at <span>$589.00</span></h3>
+                                <h5>{{ $detail->product->product_name }}<span>-{{ intval($detail->product->price*2.3) }}% Off</span> This Week</h5>
+                                <h2>{{ substr($detail->product->description,0,30) }}</h2>
+                                <h3>Starting at <span>${{ $detail->product->price }}</span></h3>
                                 <div class="default-btn slide-btn">
-                                    <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
+                                    <a class="links" href="{{ route('product', $detail->product->slug) }}">Alışveriş Zamanı</a>
                                 </div>
                             </div>
                         </div>
-                        <!-- Single Slide Area End Here -->
-                        <!-- Begin Single Slide Area -->
-                        <div class="single-slide align-center-left animation-style-01 bg-5">
-                            <div class="slider-progress"></div>
-                            <div class="slider-content">
-                                <h5>Sale Offer <span>Black Friday</span> This Week</h5>
-                                <h2>Work Desk Surface Studio 2018</h2>
-                                <h3>Starting at <span>$1599.00</span></h3>
-                                <div class="default-btn slide-btn">
-                                    <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Slide Area End Here -->
-                        <!-- Begin Single Slide Area -->
-                        <div class="single-slide align-center-left animation-style-02 bg-6">
-                            <div class="slider-progress"></div>
-                            <div class="slider-content">
-                                <h5>Sale Offer <span>-10% Off</span> This Week</h5>
-                                <h2>Phantom 4 Pro+ Obsidian</h2>
-                                <h3>Starting at <span>$809.00</span></h3>
-                                <div class="default-btn slide-btn">
-                                    <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Slide Area End Here -->
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -189,33 +166,15 @@
 <div class="li-static-banner pt-20 pt-sm-30 pt-xs-30">
     <div class="container">
         <div class="row">
-            <!-- Begin Single Banner Area -->
-            <div class="col-lg-4 col-md-4">
-                <div class="single-banner pb-xs-30">
-                    <a href="#">
-                        <img src="/frontend/images/banner/1_3.jpg" alt="Li's Static Banner">
-                    </a>
+            @for($i=3;$i<6;$i++)
+                <div class="col-lg-4 col-md-4">
+                    <div class="single-banner pb-xs-30">
+                        <a href="#">
+                        <img src="{{ $img_banner }}/1_{{ $i }}.jpg" alt="Li's Static Banner">
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <!-- Single Banner Area End Here -->
-            <!-- Begin Single Banner Area -->
-            <div class="col-lg-4 col-md-4">
-                <div class="single-banner pb-xs-30">
-                    <a href="#">
-                        <img src="/frontend/images/banner/1_4.jpg" alt="Li's Static Banner">
-                    </a>
-                </div>
-            </div>
-            <!-- Single Banner Area End Here -->
-            <!-- Begin Single Banner Area -->
-            <div class="col-lg-4 col-md-4">
-                <div class="single-banner">
-                    <a href="#">
-                        <img src="/frontend/images/banner/1_5.jpg" alt="Li's Static Banner">
-                    </a>
-                </div>
-            </div>
-            <!-- Single Banner Area End Here -->
+            @endfor
         </div>
     </div>
 </div>
