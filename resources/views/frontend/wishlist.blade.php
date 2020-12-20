@@ -6,7 +6,7 @@
     <div class="container">
         <div class="breadcrumb-content">
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{{ route('home') }}">Ana Sayfa</a></li>
                 <li class="active">Wishlist</li>
             </ul>
         </div>

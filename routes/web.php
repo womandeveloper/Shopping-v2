@@ -18,6 +18,7 @@ Route::group(['namespace' => 'frontend'], function(){
     Route::get('/shopping-card',[CartController::class,'index'])->name('shopping_cart');
     Route::get('/payment',[PaymentController::class,'index'])->name('payment');
     Route::get('/order',[OrderController::class,'index'])->name('order');
-    Route::get('/sign-in',[UserController::class, 'sign_in'])->name('sign_in');
-    Route::get('/sign-up',[UserController::class, 'sign_up'])->name('sign_up');
+    Route::get('/sign-in',[UserController::class, 'signin_form'])->name('sign_in');
+    Route::get('/sign-up',[UserController::class, 'signup_form'])->name('sign_up');
+    Route::post('/sign-up',[UserController::class, 'sign_up']);
 });

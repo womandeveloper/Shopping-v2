@@ -19,14 +19,24 @@
                         <ul class="ht-menu">
                             <!-- Begin Setting Area -->
                             <li>
+                                @guest                                    
+                                <div class="ht-setting-trigger"><span>Giriş Yap</span></div>
+                                <div class="setting ht-setting">
+                                    <ul class="ht-setting-list">
+                                        <li><a href="{{ route('sign_in') }}">Giriş Yap</a></li>
+                                        <li><a href="{{ route('sign_up') }}">Kaydol</a></li>
+                                    </ul>
+                                </div>
+                                @endguest
+                                @auth
                                 <div class="ht-setting-trigger"><span>Hesabım</span></div>
                                 <div class="setting ht-setting">
                                     <ul class="ht-setting-list">
-                                        <li><a href="login-register.html">Giriş Yap</a></li>
-                                        <li><a href="login-register.html">Hesabım</a></li>
-                                        <li><a href="checkout.html">Çıkış Yap</a></li>
+                                        <li><a href="{{ route('sign_in') }}">Siparişlerim</a></li>
+                                        <li><a href="{{ route('sign_in') }}">Çıkış Yap</a></li>
                                     </ul>
                                 </div>
+                                @endauth  
                             </li>
                             <!-- Setting Area End Here -->
                         </ul>
