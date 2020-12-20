@@ -21,7 +21,7 @@ class ProductController extends Controller
         $seacrhing_value = request('searching_value');
         $products = Product::where('product_name', 'like', "%$seacrhing_value%")
                     ->orWhere('description', 'like', "%$seacrhing_value%")
-                    ->paginate(3);
+                    ->get();
         //Bu isteğe ait aranan bilgisini oturum içerisinde saklamış oluyor
         request()->flash();
         return view('frontend.searching', compact('products','all_categories'));
