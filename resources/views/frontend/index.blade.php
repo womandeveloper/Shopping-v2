@@ -6,6 +6,7 @@
 @endphp
 <div class="slider-with-banner">
     <div class="container">
+        @include('frontend.layouts.partials.alert')
         <div class="row">
             <!-- Begin Category Menu Area -->
             <div class="col-lg-3">

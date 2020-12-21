@@ -40,3 +40,4 @@
 <script src="/frontend/js/scrollUp.min.js"></script>
 <!-- Main/Activator js -->
 <script src="/frontend/js/main.js"></script>
+<script src="/js/app.js"></script>

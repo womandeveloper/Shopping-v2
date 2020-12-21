@@ -18,7 +18,15 @@ Route::group(['namespace' => 'frontend'], function(){
     Route::get('/shopping-card',[CartController::class,'index'])->name('shopping_cart');
     Route::get('/payment',[PaymentController::class,'index'])->name('payment');
     Route::get('/order',[OrderController::class,'index'])->name('order');
-    Route::get('/sign-in',[UserController::class, 'signin_form'])->name('sign_in');
-    Route::get('/sign-up',[UserController::class, 'signup_form'])->name('sign_up');
-    Route::post('/sign-up',[UserController::class, 'sign_up']);
+    Route::group(['prefix'=>'user'], function(){
+        Route::get('/sign-in',[UserController::class, 'signin_form'])->name('sign_in');
+        Route::get('/sign-up',[UserController::class, 'signup_form'])->name('sign_up');
+        Route::post('/sign-up',[UserController::class, 'sign_up']);
+        Route::get('/activate/{key}',[UserController::class, 'activate'])->name('activate');
+    });
+});
+
+Route::get('send-mail', function () { 
+    $user = \App\Models\User::find(1);
+    return new App\Mail\SendMail($user);
 });
