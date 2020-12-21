@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d421ef3293daca19f607a0dc2f06b6c",
+    "content-hash": "650600979c4fcd876b3027ef05711424",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -109,6 +109,73 @@
                 }
             ],
             "time": "2020-08-18T23:57:15+00:00"
+        },
+        {
+            "name": "bumbummen99/shoppingcart",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bumbummen99/LaravelShoppingcart.git",
+                "reference": "b05497d17d468035869ed6d1e5af3849c9dcbea6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bumbummen99/LaravelShoppingcart/zipball/b05497d17d468035869ed6d1e5af3849c9dcbea6",
+                "reference": "b05497d17d468035869ed6d1e5af3849c9dcbea6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/events": "5.4.*||5.5.*||5.6.*||5.7.*||5.8.*||^6.0||^7.0||^8.0",
+                "illuminate/session": "5.4.*||5.5.*||5.6.*||5.7.*||5.8.*||^6.0||^7.0||^8.0",
+                "illuminate/support": "5.4.*||5.5.*||5.6.*||5.7.*||5.8.*||^6.0||^7.0||^8.0",
+                "nesbot/carbon": "~1.20||^1.26.3||^2.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^3.4|^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "~5.0||~6.0||~7.0||~8.0||~9.0"
+            },
+            "suggest": {
+                "gloudemans/notify": "Simple flash notifications for Laravel"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider"
+                    ],
+                    "aliases": {
+                        "Cart": "Gloudemans\\Shoppingcart\\Facades\\Cart"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Gloudemans\\Shoppingcart\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rob Gloudemans",
+                    "email": "info@robgloudemans.nl",
+                    "homepage": "http://robgloudemans.nl/"
+                },
+                {
+                    "name": "Patrick Henninger",
+                    "email": "privat@skyraptor.eu",
+                    "homepage": "https://skyraptor.eu/"
+                }
+            ],
+            "description": "Laravel Shoppingcart",
+            "keywords": [
+                "laravel",
+                "shoppingcart"
+            ],
+            "time": "2020-09-23T00:12:49+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -841,69 +908,6 @@
             "time": "2020-09-30T07:37:11+00:00"
         },
         {
-            "name": "hardevine/shoppingcart",
-            "version": "2.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hardevine/LaravelShoppingcart.git",
-                "reference": "2fc6eff895ae6d94978125f6bc65aceadc4873c5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hardevine/LaravelShoppingcart/zipball/2fc6eff895ae6d94978125f6bc65aceadc4873c5",
-                "reference": "2fc6eff895ae6d94978125f6bc65aceadc4873c5",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/events": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6|^7|^8",
-                "illuminate/session": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6|^7|^8",
-                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6|^7|^8"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9.0",
-                "orchestra/testbench": "~3.1",
-                "phpunit/phpunit": "~5.0 || ~6.0 || ~7.0"
-            },
-            "suggest": {
-                "gloudemans/notify": "Simple flash notifications for Laravel"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider"
-                    ],
-                    "aliases": {
-                        "Cart": "Gloudemans\\Shoppingcart\\Facades\\Cart"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Gloudemans\\Shoppingcart\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rob Gloudemans",
-                    "email": "info@robgloudemans.nl"
-                }
-            ],
-            "description": "Laravel Shoppingcart",
-            "keywords": [
-                "laravel",
-                "shoppingcart"
-            ],
-            "support": {
-                "source": "https://github.com/hardevine/LaravelShoppingcart/tree/2.9"
-            },
-            "time": "2020-09-06T07:46:29+00:00"
-        },
-        {
             "name": "laravel/framework",
             "version": "v8.18.1",
             "source": {
@@ -1117,9 +1121,6 @@
                 "helpers",
                 "laravel"
             ],
-            "support": {
-                "source": "https://github.com/laravel/helpers/tree/v1.4.0"
-            },
             "time": "2020-11-03T16:38:41+00:00"
         },
         {
@@ -7071,5 +7072,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }
