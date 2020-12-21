@@ -23,7 +23,7 @@
                                 <div class="ht-setting-trigger"><span>Giriş Yap</span></div>
                                 <div class="setting ht-setting">
                                     <ul class="ht-setting-list">
-                                        <li><a href="{{ route('sign_in') }}">Giriş Yap</a></li>
+                                        <li><a href="{{ route('login') }}">Giriş Yap</a></li>
                                         <li><a href="{{ route('sign_up') }}">Kaydol</a></li>
                                     </ul>
                                 </div>
@@ -32,8 +32,13 @@
                                 <div class="ht-setting-trigger"><span>Hesabım</span></div>
                                 <div class="setting ht-setting">
                                     <ul class="ht-setting-list">
-                                        <li><a href="{{ route('sign_in') }}">Siparişlerim</a></li>
-                                        <li><a href="{{ route('sign_in') }}">Çıkış Yap</a></li>
+                                        <li><a href="{{ route('login') }}">Siparişlerim</a></li>
+                                        <li>
+                                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Çıkış Yap</a>
+                                            <form id="logout-form" action="{{ route('checkout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
                                     </ul>
                                 </div>
                                 @endauth  
@@ -67,9 +72,11 @@
                         {{ csrf_field() }}
                         <select class="nice-select select-search-category">
                             <option value="0">All</option>
-                            @foreach ($all_categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                            @endforeach
+                            @isset($all_categories)
+                                @foreach ($all_categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                @endforeach
+                            @endisset
                         </select>
                         <input type="text" name="searching_value" value="{{ old('searching_value') }}" placeholder="Enter your search key ...">
                         <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>

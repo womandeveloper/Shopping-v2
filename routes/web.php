@@ -15,13 +15,20 @@ Route::group(['namespace' => 'frontend'], function(){
     Route::get('product/{slug_product_name}',[ProductController::class, 'index'])->name('product');    
     Route::get('/product_search',[ProductController::class,'search'])->name('product_search');
     Route::post('/product_search',[ProductController::class,'search'])->name('product_search');
-    Route::get('/shopping-card',[CartController::class,'index'])->name('shopping_cart');
-    Route::get('/payment',[PaymentController::class,'index'])->name('payment');
-    Route::get('/order',[OrderController::class,'index'])->name('order');
+    Route::get('/shopping-cart',[CartController::class,'index'])->name('shopping_cart');
+
+    Route::group(['middleware'=>'auth'], function(){
+        Route::get('/payment',[PaymentController::class,'index'])->name('payment');
+        Route::get('/orders',[OrderController::class,'index'])->name('orders');
+        Route::get('/orders/{id}',[OrderController::class,'index'])->name('order');
+    });
+    
     Route::group(['prefix'=>'user'], function(){
-        Route::get('/sign-in',[UserController::class, 'signin_form'])->name('sign_in');
+        Route::get('/sign-in',[UserController::class, 'signin_form'])->name('login');
+        Route::post('/sign-in',[UserController::class, 'login']);
         Route::get('/sign-up',[UserController::class, 'signup_form'])->name('sign_up');
         Route::post('/sign-up',[UserController::class, 'sign_up']);
+        Route::post('/checkout',[UserController::class, 'checkout'])->name('checkout');
         Route::get('/activate/{key}',[UserController::class, 'activate'])->name('activate');
     });
 });

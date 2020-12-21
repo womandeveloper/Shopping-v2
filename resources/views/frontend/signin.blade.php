@@ -7,7 +7,9 @@
         <div class="row" style="justify-content: center">
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
                 <!-- Login Form s-->
-                <form action="#" >
+                @include('frontend.layouts.partials.errors')
+                <form action="{{ route('login') }}" method="POST">
+                    {{ csrf_field() }}
                     <div class="login-form">
                         <h4 class="login-title">Oturum Aç</h4>
                         <div class="row">
@@ -21,7 +23,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
-                                    <input type="checkbox" id="remember_me">
+                                    <input type="checkbox" name="remember_me" id="remember_me">
                                     <label for="remember_me">Beni Hatırla</label>
                                 </div>
                             </div>

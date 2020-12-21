@@ -13,9 +13,25 @@ use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
+    public function __construct(){
+        $this->middleware('guest')->except('checkout');
+    }
     public function signin_form(){
         $all_categories = Category::all();
         return view('frontend.signin',compact('all_categories'));
+    }
+    public function login(){
+        $this->validate(request(),[
+            'email' => 'required|email',            
+            'password' => 'required'
+        ]);
+        if(auth()->attempt(['email'=>request('email'),'password'=>request('password')],request()->has('remember_me'))){
+            request()->session()->regenerate();
+            return redirect()->intended('/');
+        }else{
+            $errors = ['email' => 'Hatalı Giriş'];
+            return back()->withErrors($errors);
+        }
     }
     public function signup_form(){
         $all_categories = Category::all();
@@ -59,5 +75,11 @@ class UserController extends Controller
                 ->with('message_type', 'warning')
                 ->with('all_categories',$all_categories);
         }
+    }
+    public function checkout(){
+        auth()->logout();
+        request()->session()->flush();
+        request()->session()->regenerate();
+        return redirect()->route('home');
     }
 }
