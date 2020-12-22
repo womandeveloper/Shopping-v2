@@ -96,10 +96,12 @@
                             <!-- Begin Header Mini Cart Area -->
                             <li class="hm-minicart">
                                 <div class="hm-minicart-trigger">
-                                    <span class="item-icon"></span>
-                                    <span class="item-text">£80.00
-                                        <span class="cart-item-count">2</span>
-                                    </span>
+                                    <a href="{{ route('shopping_cart') }}" style="color: #fff">
+                                        <span class="item-icon"></span>
+                                        <span class="item-text">{{ Cart::total() }}₺
+                                            <span class="cart-item-count">{{ Cart::count() }}</span>
+                                        </span>
+                                    </a>
                                 </div>
                                 <span></span>
                                 <div class="minicart">
@@ -131,11 +133,11 @@
                                     </ul>
                                     <p class="minicart-total">SUBTOTAL: <span>£80.00</span></p>
                                     <div class="minicart-button">
-                                        <a href="checkout.html" class="li-button li-button-dark li-button-fullwidth li-button-sm">
-                                            <span>View Full Cart</span>
+                                        <a href="{{ route('shopping_cart') }}" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                            <span>Sepete Git</span>
                                         </a>
-                                        <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
-                                            <span>Checkout</span>
+                                        <a href="{{ route('payment') }}" class="li-button li-button-fullwidth li-button-sm">
+                                            <span>Satın Al</span>
                                         </a>
                                     </div>
                                 </div>

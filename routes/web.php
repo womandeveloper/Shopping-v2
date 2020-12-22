@@ -15,7 +15,11 @@ Route::group(['namespace' => 'frontend'], function(){
     Route::get('product/{slug_product_name}',[ProductController::class, 'index'])->name('product');    
     Route::get('/product_search',[ProductController::class,'search'])->name('product_search');
     Route::post('/product_search',[ProductController::class,'search'])->name('product_search');
-    Route::get('/shopping-cart',[CartController::class,'index'])->name('shopping_cart');
+
+    Route::group(['prefix' => 'cart'], function () {        
+        Route::get('/',[CartController::class,'index'])->name('shopping_cart');
+        Route::post('/add',[CartController::class, 'add'])->name('shopping_add');
+    });
 
     Route::group(['middleware'=>'auth'], function(){
         Route::get('/payment',[PaymentController::class,'index'])->name('payment');

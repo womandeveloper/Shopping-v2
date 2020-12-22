@@ -100,7 +100,8 @@
                             </div>
                         </div>
                         <div class="single-add-to-cart">
-                            <form action="#" class="cart-quantity">
+                            <form action="{{ route('shopping_add') }}" method="POST" class="cart-quantity">
+                                {{ csrf_field() }}
                                 <div class="quantity">
                                     <label>Quantity</label>
                                     <div class="cart-plus-minus">
@@ -109,7 +110,8 @@
                                         <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                     </div>
                                 </div>
-                                <button class="add-to-cart" type="submit">Add to cart</button>
+                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                <button class="add-to-cart" type="submit">Sepete Ekle</button>
                             </form>
                         </div>
                         <div class="product-additional-info pt-25">

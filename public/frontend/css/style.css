@@ -1787,7 +1787,6 @@ textarea:focus {
 .ht-menu > li .ht-currency-trigger span::after,
 .ht-menu > li .ht-language-trigger span::after,
 .hm-minicart-trigger .item-text::after {
-	content: "\f106";
 	float: right;
 	font-weight: 400;
 	font-size: 18px;
@@ -1805,7 +1804,6 @@ textarea:focus {
 .ht-menu > li .ht-currency-trigger span::after,
 .ht-menu > li .ht-language-trigger span::after,
 .hm-minicart-trigger .item-text::after {
-	content: "\f107";
 	font-size: 14px;
 	color: #a4a4a4;
 	margin-left: 5px;
