@@ -35,8 +35,12 @@
                                             <td class="quantity">
                                                 <div class="cart-plus-minus">
                                                     <input class="cart-plus-minus-box" value="{{ $product_cart->qty }}" type="text">
-                                                    <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                                    <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                                    <div class="dec qtybutton " >
+                                                        <a href="#" class="product-piece-dec" data-id="{{ $product_cart->rowId }}" data-piece="{{ $product_cart->qty-1 }}"></a>
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </div>
+                                                    <div class="inc qtybutton product-piece-inc" data-id="{{ $product_cart->rowId }}" data-piece="{{ $product_cart->qty+1 }}">
+                                                        <i class="fa fa-angle-up"></i></div>
                                                 </div>
                                             </td>
                                             <td class="product-subtotal"><span class="amount">{{ $product_cart->subtotal }} ₺</span></td>
