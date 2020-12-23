@@ -18,7 +18,19 @@ class CartController extends Controller
         $product = Product::find(request('id'));
         Cart::add($product->id, $product->product_name, 1 , $product->price, 0, ['slug' => $product->slug]);
         return redirect()->route('shopping_cart')
-            ->with('message', 'Ürün Sepete Eklendi')
-            ->with('message_type', 'success');
+                        ->with('message', 'Ürün Sepete Eklendi')
+                        ->with('message_type', 'success');
+    }
+    public function remove($rowid){
+        Cart::remove($rowid);
+        return redirect()->route('shopping_cart')
+                        ->with('message', 'Ürün Sepetten Kaldırıldı')
+                        ->with('message_type', 'success');
+    }
+    public function destroy(){
+        Cart::destroy();
+        return redirect()->route('shopping_cart')
+                    ->with('message', 'Tüm ürünler Sepetten Kaldırıldı')
+                    ->with('message_type', 'success');
     }
 }

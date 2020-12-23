@@ -103,7 +103,7 @@ a:hover {
 a,
 button,
 input {
-	outline: medium none;	
+	outline: medium none;
 	color: #242424;
 }
 button:focus {
@@ -4067,7 +4067,7 @@ thead {
 	text-transform: uppercase;
 	-webkit-transition: all 0.3s ease-in-out 0s;
 	transition: all 0.3s ease-in-out 0s;
-	width: inherit;
+	width: 200px!important;
 }
 .coupon-all input.button:hover {
 	background: #fed700;

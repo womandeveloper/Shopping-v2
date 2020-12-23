@@ -6,9 +6,8 @@
         <div class="row">
             <div class="col-12">
                 @include('frontend.layouts.partials.alert')
-                @if (count(Cart::content())>0) 
-                <form action="#">
-                    <div class="table-content table-responsive">                                                   
+                @if (count(Cart::content())>0)
+                    <div class="table-content table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -23,7 +22,13 @@
                                 <tbody>
                                     @foreach (Cart::content() as $product_cart)
                                         <tr>
-                                            <td class="li-product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                                            <td class="test">
+                                                <form action="{{ route('shopping_remove', $product_cart->rowId) }}" method="post">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <button class="btn" type="submit"><i class="fa fa-times"></i></button>
+                                                </form>
+                                            </td>
                                             <td class="li-product-thumbnail" style="width: 120px;"><a href="{{ route('product', $product_cart->options->slug) }}"><img src="/frontend/images/product/small-size/5.jpg" alt="Li's Product Image"></a></td>
                                             <td class="li-product-name"><a href="{{ route('product', $product_cart->options->slug) }}">{{ $product_cart->name }}</a></td>
                                             <td class="li-product-price"><span class="amount">{{ $product_cart->price }} ₺</span></td>
@@ -35,7 +40,7 @@
                                                 </div>
                                             </td>
                                             <td class="product-subtotal"><span class="amount">{{ $product_cart->subtotal }} ₺</span></td>
-                                        </tr> 
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -44,11 +49,26 @@
                         <div class="col-12">
                             <div class="coupon-all">
                                 <div class="coupon">
-                                    <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
-                                    <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
+                                    <form action="{{ route('shopping_destroy') }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <input class="button" name="update_cart" value="Sepeti Boşalt" type="submit">
+                                    </form>
                                 </div>
                                 <div class="coupon2">
-                                    <input class="button" name="update_cart" value="Update cart" type="submit">
+                                    <input class="button" name="update_cart" value="Sepeti Güncelle" type="submit">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="coupon-all">
+                                <div class="row justify-content-end float-right mr-0">
+                                    <div class="col">
+                                        <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Kupon Kodu" type="text">
+                                    </div>
+                                    <div class="col px-0">
+                                    <input class="button" name="apply_coupon" value="Kupon Uygula" type="submit">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -62,11 +82,10 @@
                                     <li>Tutar <span>{{ Cart::subtotal() }} ₺</span></li>
                                     <li>Toplan Tutar <span>{{ Cart::total() }} ₺</span></li>
                                 </ul>
-                                <a href="{{ route('payment') }}">Satın Al</a>
+                                <a class="float-right" href="{{ route('payment') }}">Satın Al</a>
                             </div>
                         </div>
                     </div>
-                </form>
                 @else
                     <h1>Sepetim</h1>
                     <p>Sepetinizde Ürün Bulunmamaktadır</p>
