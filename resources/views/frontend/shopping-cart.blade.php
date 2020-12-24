@@ -35,12 +35,12 @@
                                             <td class="quantity">
                                                 <div class="cart-plus-minus">
                                                     <input class="cart-plus-minus-box" value="{{ $product_cart->qty }}" type="text">
-                                                    <div class="dec qtybutton " >
-                                                        <a href="#" class="product-piece-dec" data-id="{{ $product_cart->rowId }}" data-piece="{{ $product_cart->qty-1 }}"></a>
+                                                    <div class="inc qtybutton product-piece-inc" data-id="{{ $product_cart->rowId }}" data-piece="{{ $product_cart->qty+1 }}">
+                                                        <i class="fa fa-angle-up"></i>
+                                                    </div>
+                                                    <div class="dec qtybutton product-piece-dec" data-id="{{ $product_cart->rowId }}" data-piece="{{ $product_cart->qty-1 }}">
                                                         <i class="fa fa-angle-down"></i>
                                                     </div>
-                                                    <div class="inc qtybutton product-piece-inc" data-id="{{ $product_cart->rowId }}" data-piece="{{ $product_cart->qty+1 }}">
-                                                        <i class="fa fa-angle-up"></i></div>
                                                 </div>
                                             </td>
                                             <td class="product-subtotal"><span class="amount">{{ $product_cart->subtotal }} ₺</span></td>
@@ -98,4 +98,23 @@
         </div>
     </div>
 </div>
+@endsection
+@section('footer')
+<script>
+    $(function(){
+        $('.product-piece-dec, .product-piece-inc').on('click', function(){
+            let id = $(this).attr('data-id');
+            let piece = $(this).attr('data-piece');
+            $.ajax({
+                type: 'PATCH',
+                url: "{{ url('/cart/update') }}/"+id,
+                data: {piece: piece},
+                success: function(result){
+                    window.location.href = "{{ route('shopping_cart') }}";
+                }
+            });
+        });
+    });
+
+</script>
 @endsection

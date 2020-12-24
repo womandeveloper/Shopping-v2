@@ -18,7 +18,7 @@ class CreateCartProductsTable extends Migration
             $table->unsignedBigInteger('cart_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('piece');
-            $table->decimal('total',5,2);
+            $table->decimal('price',5,2);
             $table->string('status',30);
             $table->timestamps();
             $table->softDeletes();

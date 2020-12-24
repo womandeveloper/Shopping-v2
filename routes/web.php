@@ -21,6 +21,7 @@ Route::group(['namespace' => 'frontend'], function(){
         Route::post('/add',[CartController::class, 'add'])->name('shopping_add');
         Route::delete('/remove/{rowid}',[CartController::class, 'remove'])->name('shopping_remove');
         Route::delete('/destroy',[CartController::class, 'destroy'])->name('shopping_destroy');
+        Route::patch('/update/{rowid}',[CartController::class, 'update'])->name('shopping_update');
     });
 
     Route::group(['middleware'=>'auth'], function(){

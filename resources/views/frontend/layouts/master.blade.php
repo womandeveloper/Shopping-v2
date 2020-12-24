@@ -13,10 +13,9 @@
         @include('frontend.layouts.partials.header')
         @yield('content')
         @include('frontend.layouts.partials.footer')
-        @yield('footer')
     </div>
         @include('frontend.layouts.partials.script')
-
+        @yield('footer')
 </body>
 
 </html>

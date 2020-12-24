@@ -2,8 +2,15 @@ require('./bootstrap');
 
 setTimeout(() => {
     $('.alert').slideUp(500);
-}, 5000);
+}, 3000);
 
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+/*
 $('.product-piece-dec, .product-piece-inc').on('click', function(){
     let id = $(this).attr('data-id');
     let piece = $(this).attr('data-piece');
@@ -18,3 +25,4 @@ $('.product-piece-dec, .product-piece-inc').on('click', function(){
         }
     });
 });
+*/

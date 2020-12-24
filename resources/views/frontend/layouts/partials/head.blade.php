@@ -1,6 +1,8 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="/frontend/images/favicon.png">
 <!-- Material Design Iconic Font-V2.2.0 -->
