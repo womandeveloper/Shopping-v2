@@ -5,11 +5,14 @@ namespace App\Http\Controllers\frontend;
 use App\Models\User;
 use App\Mail\SendMail;
 use App\Models\Category;
+use App\Models\CartProduct;
 use Illuminate\Support\Str;
+use App\Models\ShoppingCart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class UserController extends Controller
 {
@@ -27,6 +30,25 @@ class UserController extends Controller
         ]);
         if(auth()->attempt(['email'=>request('email'),'password'=>request('password')],request()->has('remember_me'))){
             request()->session()->regenerate();
+            //firstOrCreate:db'de bulursa ilk kaydı al bulamazsan oluştur
+            $active_cart_id = ShoppingCart::firstOrCreate(['user_id' => auth()->id()])->id;
+
+            session()->put('active_cart_id', $active_cart_id);
+            if(Cart::count()>0){
+                foreach(Cart::content() as $cartItem){
+                    CartProduct::updateOrCreate(
+                        ['cart_id' => $active_cart_id, 'product_id' => $cartItem->id],
+                        ['piece' => $cartItem->qty, 'price' => $cartItem->price, 'status' => 'Beklemede']
+                    );
+                }
+            }
+
+            Cart::destroy();
+            $cart_products = CartProduct::with('product')->where('cart_id', $active_cart_id)->get();
+            foreach($cart_products as $cart_product){
+                Cart::add($cart_product->product->id, $cart_product->product->product_name, $cart_product->piece , $cart_product->product->price, 0, ['slug' => $cart_product->product->slug]);
+            }
+
             return redirect()->intended('/');
         }else{
             $errors = ['email' => 'Hatalı Giriş'];

@@ -11,4 +11,9 @@ class CartProduct extends Model
     use HasFactory;
     use SoftDeletes;
     protected $guarded = [];
+
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product');
+    }
 }
