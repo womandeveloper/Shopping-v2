@@ -73,6 +73,7 @@ class UserController extends Controller
             'activation_key' => Str::random(60),
             'is_active' => 0
         ]);
+        $user->detail()->save(new UserDetail());
 
         Mail::to(request('email'))->send(new SendMail($user));
         
