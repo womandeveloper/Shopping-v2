@@ -64,6 +64,7 @@ class CartController extends Controller
                     ->with('message_type', 'success');
     }
     public function update($rowid){
+        $piece = request('piece');
         $validator = Validator::make(request()->all(), [
             'piece' => 'required|numeric|between:0,10'
         ]);
@@ -74,7 +75,13 @@ class CartController extends Controller
 
             return response()->json(['success' => false]);
         }
-        Cart::update($rowid, request('piece'));
+        if(auth()->check()){
+            $active_cart_id = session('active_cart_id');
+            $cartItem = Cart::get($rowid);
+            if($piece == 0)     CartProduct::where('cart_id', $active_cart_id)->where('product_id', $cartItem->id)->delete();
+            else    CartProduct::where('cart_id', $active_cart_id)->where('product_id', $cartItem->id)->update(['piece' => $piece]);
+        }
+        Cart::update($rowid, $piece);
         return response()->json(['success' => true]);
     }
 }
