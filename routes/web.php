@@ -11,10 +11,12 @@ use App\Http\Controllers\frontend\ProductController;
 use App\Http\Controllers\frontend\CategoryController;
 
 Route::group(['prefix' => 'admin','namespace' => 'backend'], function () {
-    Route::get('/', function () {
-        return 'Admin';
+    Route::redirect('/', '/admin/login');
+    Route::match(['get','post'], '/login', ['App\Http\Controllers\backend\UserController', 'index'])->name('admin.login');
+    Route::get('/logout', ['App\Http\Controllers\backend\UserController','logout'])->name('admin.logout');
+    Route::group(['middleware' => 'admin'], function () {        
+        Route::get('/home', ['App\Http\Controllers\backend\HomeController','index'])->name('admin.home');
     });
-    Route::get('/login', ['App\Http\Controllers\backend\UserController', 'index'])->name('admin.login');
 });
 
 Route::group(['namespace' => 'frontend'], function(){

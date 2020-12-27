@@ -19,7 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email',150)->uniqid();
             $table->string('password',60);
             $table->string('activation_key',60)->nullable();
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(0);
+            $table->boolean('is_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
