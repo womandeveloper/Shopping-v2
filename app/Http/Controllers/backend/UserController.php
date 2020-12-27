@@ -36,4 +36,13 @@ class UserController extends Controller
 
         return redirect()->route('admin.login');
     }
+    public function list(){
+        return view('backend.user-list');
+    }
+    public function add(){
+        return view('backend.user-add');
+    }
+    public function update(){
+        return view('backend.user-update');
+    }
 }

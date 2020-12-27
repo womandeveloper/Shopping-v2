@@ -16,6 +16,11 @@ Route::group(['prefix' => 'admin','namespace' => 'backend'], function () {
     Route::get('/logout', ['App\Http\Controllers\backend\UserController','logout'])->name('admin.logout');
     Route::group(['middleware' => 'admin'], function () {        
         Route::get('/home', ['App\Http\Controllers\backend\HomeController','index'])->name('admin.home');
+        Route::group(['prefix' => 'user'], function () {            
+            Route::get('/', ['App\Http\Controllers\backend\UserController','list'])->name('admin.list');
+            Route::get('/add', ['App\Http\Controllers\backend\UserController','add'])->name('admin.add');
+            Route::get('/update', ['App\Http\Controllers\backend\UserController','update'])->name('admin.update');
+        });
     });
 });
 
