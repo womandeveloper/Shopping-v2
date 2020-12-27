@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\frontend\CartController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\UserController;
@@ -8,6 +9,13 @@ use App\Http\Controllers\frontend\OrderController;
 use App\Http\Controllers\frontend\PaymentController;
 use App\Http\Controllers\frontend\ProductController;
 use App\Http\Controllers\frontend\CategoryController;
+
+Route::group(['prefix' => 'admin','namespace' => 'backend'], function () {
+    Route::get('/', function () {
+        return 'Admin';
+    });
+    Route::get('/login', ['App\Http\Controllers\backend\UserController', 'index'])->name('admin.login');
+});
 
 Route::group(['namespace' => 'frontend'], function(){
     Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -24,10 +32,12 @@ Route::group(['namespace' => 'frontend'], function(){
         Route::patch('/update/{rowid}',[CartController::class, 'update'])->name('shopping_update');
     });
 
+    Route::get('/payment',[PaymentController::class,'index'])->name('payment');
+    Route::post('pay',[PaymentController::class,'pay'])->name('pay');
+
     Route::group(['middleware'=>'auth'], function(){
-        Route::get('/payment',[PaymentController::class,'index'])->name('payment');
         Route::get('/orders',[OrderController::class,'index'])->name('orders');
-        Route::get('/orders/{id}',[OrderController::class,'index'])->name('order');
+        Route::get('/orders/{id}',[OrderController::class,'detail'])->name('order');
     });
 
     Route::group(['prefix'=>'user'], function(){

@@ -18,6 +18,7 @@ class CreateUserDetailTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('address', 200)->nullable();
             $table->string('phone_number', 15)->nullable();
+            $table->string('mobile_number', 15)->nullable();            
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

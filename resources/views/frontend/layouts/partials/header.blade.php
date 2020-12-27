@@ -32,7 +32,7 @@
                                 <div class="ht-setting-trigger"><span>Hesabım</span></div>
                                 <div class="setting ht-setting">
                                     <ul class="ht-setting-list">
-                                        <li><a href="{{ route('login') }}">Siparişlerim</a></li>
+                                        <li><a href="{{ route('orders') }}">Siparişlerim</a></li>
                                         <li>
                                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Çıkış Yap</a>
                                             <form id="logout-form" action="{{ route('checkout') }}" method="POST" style="display: none;">

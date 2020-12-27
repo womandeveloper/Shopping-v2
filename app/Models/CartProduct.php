@@ -10,6 +10,7 @@ class CartProduct extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $table = 'cart_products';
     protected $guarded = [];
 
     public function product()

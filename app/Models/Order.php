@@ -11,10 +11,10 @@ class Order extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['cart_id', 'order_price', 'status', 'bank', 'installment'];
-    protected $guarded = [];
+    protected $fillable = ['cart_id', 'order_price', 'status', 'fullname', 'address',
+                             'phone_number', 'mobile_number', 'bank', 'installment'];
 
     public function cart(){
-        return $this->belongTo('App\Models\ShoppingCart');
+        return $this->belongsTo('App\Models\ShoppingCart');
     }
 }

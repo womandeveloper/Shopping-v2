@@ -7,6 +7,7 @@
         <div class="row" style="justify-content: center">
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
                 <!-- Login Form s-->
+                @include('frontend.layouts.partials.alert')
                 @include('frontend.layouts.partials.errors')
                 <form action="{{ route('login') }}" method="POST">
                     {{ csrf_field() }}

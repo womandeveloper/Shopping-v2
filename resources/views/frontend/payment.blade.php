@@ -3,319 +3,120 @@
 @section('content')
 <div class="checkout-area pt-30 pb-30">
     <div class="container">
+        @include('frontend.layouts.partials.alert')
         <div class="row">
-            <div class="col-12">
-                <div class="coupon-accordion">
-                    <!--Accordion Start-->
-                    <h3>Returning customer? <span id="showlogin">Click here to login</span></h3>
-                    <div id="checkout-login" class="coupon-content">
-                        <div class="coupon-info">
-                            <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
-                            <form action="#">
-                                <p class="form-row-first">
-                                    <label>Username or email <span class="required">*</span></label>
-                                    <input type="text">
-                                </p>
-                                <p class="form-row-last">
-                                    <label>Password  <span class="required">*</span></label>
-                                    <input type="text">
-                                </p>
-                                <p class="form-row">
-                                    <input value="Login" type="submit">
-                                    <label>
-                                        <input type="checkbox">
-                                            Remember me 
-                                    </label>
-                                </p>
-                                <p class="lost-password"><a href="#">Lost your password?</a></p>
-                            </form>
-                        </div>
-                    </div>
-                    <!--Accordion End-->
-                    <!--Accordion Start-->
-                    <h3>Have a coupon? <span id="showcoupon">Click here to enter your code</span></h3>
-                    <div id="checkout_coupon" class="coupon-checkout-content">
-                        <div class="coupon-info">
-                            <form action="#">
-                                <p class="checkout-coupon">
-                                    <input placeholder="Coupon code" type="text">
-                                    <input value="Apply Coupon" type="submit">
-                                </p>
-                            </form>
-                        </div>
-                    </div>
-                    <!--Accordion End-->
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6 col-12">
-                <form action="#">
-                    <div class="checkbox-form">
-                        <h3>Billing Details</h3>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="country-select clearfix">
-                                    <label>Country <span class="required">*</span></label>
-                                    <select class="nice-select wide">
-                                        <option data-display="Bangladesh">Bangladesh</option>
-                                        <option value="uk">London</option>
-                                        <option value="rou">Romania</option>
-                                        <option value="fr">French</option>
-                                        <option value="de">Germany</option>
-                                        <option value="aus">Australia</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>First Name <span class="required">*</span></label>
-                                    <input placeholder="" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Last Name <span class="required">*</span></label>
-                                    <input placeholder="" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <label>Company Name</label>
-                                    <input placeholder="" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <label>Address <span class="required">*</span></label>
-                                    <input placeholder="Street address" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <label>Town / City <span class="required">*</span></label>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>State / County <span class="required">*</span></label>
-                                    <input placeholder="" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Postcode / Zip <span class="required">*</span></label>
-                                    <input placeholder="" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Email Address <span class="required">*</span></label>
-                                    <input placeholder="" type="email">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Phone  <span class="required">*</span></label>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list create-acc">
-                                    <input id="cbox" type="checkbox">
-                                    <label>Create an account?</label>
-                                </div>
-                                <div id="cbox-info" class="checkout-form-list create-account">
-                                    <p>Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
-                                    <label>Account password  <span class="required">*</span></label>
-                                    <input placeholder="password" type="password">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="different-address">
-                            <div class="ship-different-title">
-                                <h3>
-                                    <label>Ship to a different address?</label>
-                                    <input id="ship-box" type="checkbox">
-                                </h3>
-                            </div>
-                            <div id="ship-box-info" class="row">
-                                <div class="col-md-12">
-                                    <div class="country-select clearfix">
-                                        <label>Country <span class="required">*</span></label>
-                                        <select class="nice-select wide">
-                                            <option data-display="Bangladesh">Bangladesh</option>
-                                            <option value="uk">London</option>
-                                            <option value="rou">Romania</option>
-                                            <option value="fr">French</option>
-                                            <option value="de">Germany</option>
-                                            <option value="aus">Australia</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                        <label>First Name <span class="required">*</span></label>
-                                        <input placeholder="" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                        <label>Last Name <span class="required">*</span></label>
-                                        <input placeholder="" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                        <label>Company Name</label>
-                                        <input placeholder="" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                        <label>Address <span class="required">*</span></label>
-                                        <input placeholder="Street address" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                        <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                        <label>Town / City <span class="required">*</span></label>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                        <label>State / County <span class="required">*</span></label>
-                                        <input placeholder="" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                        <label>Postcode / Zip <span class="required">*</span></label>
-                                        <input placeholder="" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                        <label>Email Address <span class="required">*</span></label>
-                                        <input placeholder="" type="email">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                        <label>Phone  <span class="required">*</span></label>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="order-notes">
-                                <div class="checkout-form-list">
-                                    <label>Order Notes</label>
-                                    <textarea id="checkout-mess" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-lg-6 col-12">
+            <div class="col-lg-12">
                 <div class="your-order">
-                    <h3>Your order</h3>
-                    <div class="your-order-table table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="cart-product-name">Product</th>
-                                    <th class="cart-product-total">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="cart_item">
-                                    <td class="cart-product-name"> Vestibulum suscipit<strong class="product-quantity"> × 1</strong></td>
-                                    <td class="cart-product-total"><span class="amount">£165.00</span></td>  
-                                </tr>
-                                <tr class="cart_item">
-                                    <td class="cart-product-name"> Vestibulum suscipit<strong class="product-quantity"> × 1</strong></td>
-                                    <td class="cart-product-total"><span class="amount">£165.00</span></td>  
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr class="cart-subtotal">
-                                    <th>Cart Subtotal</th>
-                                    <td><span class="amount">£215.00</span></td>
-                                </tr>
-                                <tr class="order-total">
-                                    <th>Order Total</th>
-                                    <td><strong><span class="amount">£215.00</span></strong></td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                    <div class="payment-method">
-                        <div class="payment-accordion">
-                            <div id="accordion">
-                                <div class="card">
-                                <div class="card-header" id="#payment-1">
-                                    <h5 class="panel-title">
-                                    <a class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Direct Bank Transfer.
-                                    </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                                    <div class="card-body">
-                                    <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                    <div class="bg-content">
+                        <form action="{{ route('pay') }}" method="post">
+                            {{ csrf_field() }}
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <h3>Ödeme Bilgileri</h3>
+                                    <div class="form-group">
+                                        <label for="kart_numarasi">Kredi Kartı Numarası</label>
+                                        <input type="text" class="form-control kredikarti" id="kart_numarasi" name="credit_card" style="font-size:20px;" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="son_kullanma_tarihi_ay">Son Kullanma Tarihi</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                Ay
+                                                <select name="expiration_date_month" id="son_kullanma_tarihi_ay" class="form-control" required>
+                                                    <?php for( $m=1; $m<=12; ++$m ) { 
+                                                      $month_label = date('F', mktime(0, 0, 0, $m, 1));
+                                                    ?>
+                                                      <option value="<?php echo $m; ?>"><?php echo $month_label; ?></option>
+                                                    <?php } ?>
+                                                </select> 
+                                            </div>
+                                            <div class="col-md-6">
+                                                Yıl
+                                                <select id="son_kullanma_tarihi_yil" name="expiration_date_year" class="form-control" required>
+                                                    <?php 
+                                                      $year = date('Y');
+                                                      $min = $year - 60;
+                                                      $max = $year;
+                                                      for( $i=$max; $i>=$min; $i-- ) {
+                                                        echo '<option value='.$i.'>'.$i.'</option>';
+                                                      }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="card_cvv">CVV (Güvenlik Numarası)</label>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control kredikarti_cvv" name="card_cvv" id="card_cvv" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="checkout-form-list create-acc">
+                                        <input id="cbox" type="checkbox" checked>
+                                        <label>Ön bilgilendirme formunu okudum ve kabul ediyorum.</label>
+                                    </div>
+                                    <div class="checkout-form-list create-acc">
+                                        <input id="cbox" type="checkbox" checked>
+                                        <label>Mesafeli satış sözleşmesini okudum ve kabul ediyorum.</label>
                                     </div>
                                 </div>
-                                </div>
-                                <div class="card">
-                                <div class="card-header" id="#payment-2">
-                                    <h5 class="panel-title">
-                                    <a class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Cheque Payment
-                                    </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                    <div class="card-body">
-                                    <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                <div class="col-md-7">
+                                    <h3>İletişim ve Fatura Bilgileri</h3>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="adsoyad">Ad Soyad</label>
+                                                <input type="text" class="form-control" name="fullname" id="adsoyad" value="{{ auth()->user()->fullname }}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="adres">Adres</label>
+                                                <input type="text" class="form-control" name="address" id="adres" value="{{ $user_detail->address }}" required>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                </div>
-                                <div class="card">
-                                <div class="card-header" id="#payment-3">
-                                    <h5 class="panel-title">
-                                    <a class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        PayPal
-                                    </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseThree" class="collapse" data-parent="#accordion">
-                                    <div class="card-body">
-                                    <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                    
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="telefon">Telefon</label>
+                                                <input type="text" class="form-control telefon" name="phone_number" id="telefon" value="{{ $user_detail->phone_number }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="ceptelefonu">Cep Telefonu</label>
+                                                <input type="text" class="form-control telefon" name="mobile_number" id="ceptelefonu" value="{{ $user_detail->mobile_number }}" required>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                    <br>
+                                    <h4>Ödenecek Tutar : <i>{{ Cart::total() }} TL</i></h4>
                                 </div>
                             </div>
-                            <div class="order-button-payment">
-                                <input value="Place order" type="submit">
+                            <div class="payment-method mt-0">
+                                <div class="payment-accordion">
+                                    <div class="order-button-payment">
+                                        <input value="Ödeme Yap" type="submit">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section('footer')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.js"></script>
+    <script>
+        $('.kredikarti').mask('0000-0000-0000-0000', { placeholder: "____-____-____-____" });
+        $('.kredikarti_cvv').mask('000', { placeholder: "___" });
+        $('.telefon').mask('(000) 000-00-00', { placeholder: "(___) ___-__-__" });
+    </script>
 @endsection

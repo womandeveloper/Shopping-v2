@@ -31,8 +31,15 @@ class UserController extends Controller
         if(auth()->attempt(['email'=>request('email'),'password'=>request('password')],request()->has('remember_me'))){
             request()->session()->regenerate();
             //firstOrCreate:db'de bulursa ilk kaydı al bulamazsan oluştur
-            $active_cart_id = ShoppingCart::firstOrCreate(['user_id' => auth()->id()])->id;
-
+            //$active_cart_id = ShoppingCart::firstOrCreate(['user_id' => auth()->id()])->id;
+            $active_cart = ShoppingCart::active_cart_id();
+            if(is_null($active_cart)){
+                $active_cart = ShoppingCart::create([
+                    'user_id' => auth()->id()
+                ]);
+            }            
+            $active_cart_id = $active_cart->id;
+            
             session()->put('active_cart_id', $active_cart_id);
             if(Cart::count()>0){
                 foreach(Cart::content() as $cartItem){
@@ -44,6 +51,7 @@ class UserController extends Controller
             }
 
             Cart::destroy();
+
             $cart_products = CartProduct::with('product')->where('cart_id', $active_cart_id)->get();
             foreach($cart_products as $cart_product){
                 Cart::add($cart_product->product->id, $cart_product->product->product_name, $cart_product->piece , $cart_product->product->price, 0, ['slug' => $cart_product->product->slug]);
