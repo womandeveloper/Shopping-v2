@@ -1,16 +1,5 @@
 @extends('backend.layouts.master')
 @section('title', 'Ana Sayfa')
-@section('head')
-    <link rel="stylesheet" media="all" type="text/css" href="/backend/vendor/upload/css/fileinput.min.css">
-    <link rel="stylesheet" type="text/css" media="all" href="/backend/vendor/upload/themes/explorer-fas/theme.min.css">
-    <script src="/backend/vendor/upload/js/fileinput.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/backend/vendor/upload/themes/fas/theme.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/backend/vendor/upload/themes/explorer-fas/theme.minn.js" type="text/javascript" charset="utf-8"></script>
-
-    <script src="/backend/vendor/jquery/jquery.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/backend/vendor/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-
-@endsection
 @section('content')
 <div class="container">
 	<div class="row">
@@ -18,7 +7,7 @@
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
 					<h5 class="m-0 font-weight-bold text-primary">Sipariş Düzenleme İşlemi </h5>
-					</div>
+				</div>
 					<div class="card-body">
 						<form action="islemler/islem.php" method="POST"  enctype="multipart/form-data"  data-parsley-validate>
 							<div class="form-row">
@@ -70,18 +59,14 @@
 									</select>
 								</div>
 							</div>			
-							<div class="form-row">
-								<div class="col-md-6">
-									<div class="file-loading">
-										<input type="file" class="form-control" id="sipdosya" name="sip_dosya" >
-									</div>
-									<div class="custom-control custom-checkbox small mt-2">
-										<input type="checkbox" class="custom-control-input" value="sil" id="dosya_sil" name="dosya_sil">
-										<label class="custom-control-label" for="dosya_sil">Dosyaları Sil</label>
-									</div>
-								</div>
-
-							</div>			
+                            <div class="form-row d-flex justify-content-center mb-3">
+                                <div class="col-md-6">
+                                  <div class="custom-file">
+                                      <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                  </div>
+                                </div>
+                            </div>			
 							<div class="form-row mt-2">
 								<div class="form-group col-md-12">
 									<textarea class="ckeditor" name="sip_detay" id="editor">Detaylar</textarea>
@@ -91,34 +76,13 @@
 							<button type="submit" name="siparisguncelle" class="btn btn-success">Kaydet</button>
 						</form>
 					</div>
-				</div>
 			</div>
 		</div>
 	</div>
+</div>
 @endsection
 @section('footer')    
-    <!-- End of Main Content -->
-    <script src="/backend/vendor/ckeditor/ckeditor.js"></script>
     <script>
-    CKEDITOR.replace( 'editor' );
-    </script>
-    <!--İşlem sonucu açılan bildirim popupunu otomatik kapatma giriş-->
-    <script type="text/javascript">
-    $('#islemsonucu').modal('show');
-    setTimeout(function() {
-        $('#islemsonucu').modal('hide');
-    }, 3000);
-    </script>
-    <!--İşlem sonucu açılan bildirim popupunu otomatik kapatma çıkış-->
-    <script>
-    $(document).ready(function () {
-        $("#sip_dosya").fileinput({
-        'theme': 'explorer-fas',
-        'showUpload': false,
-        'showCaption': true,
-        showDownload: true,
-        allowedFileExtensions: ["jpg", "png", "jpeg","mp4","zip","rar"],
-        });
-    });
+        CKEDITOR.replace( 'editor' );
     </script>
 @endsection
