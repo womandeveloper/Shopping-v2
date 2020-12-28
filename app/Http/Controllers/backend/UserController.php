@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -18,6 +20,7 @@ class UserController extends Controller
             $credentials = [
                 'email'    => request()->get('email'),
                 'password' => request()->get('password'),
+                'is_active' => 1,
                 'is_admin' => 1
             ];
             if(Auth::guard('admin')->attempt($credentials, request()->has('remember_me'))){
@@ -37,12 +40,26 @@ class UserController extends Controller
         return redirect()->route('admin.login');
     }
     public function list(){
-        return view('backend.user-list');
+        $lists = User::orderByDesc('created_at')->paginate(8);
+        return view('backend.user-list', compact('lists'));
     }
-    public function add(){
-        return view('backend.user-add');
+    public function create(){
+        return view('backend.user-create');
     }
-    public function update(){
-        return view('backend.user-update');
+    public function update($id){
+        $data = User::find($id);
+        return view('backend.user-update', compact('data'));
+    }
+    public function save($id){
+        $this->validate(request(), [
+            'fullname' => 'required',
+            'email' => 'required|email'
+        ]);
+        $entry = User::where('id', $id)->firstOrFail();
+        $data = request()->only('fullname', 'email');
+        if(request()->filled('password')){
+            $data['password'] = Hash::make(request('password'));
+        }
+        $entry->update($data);
     }
 }

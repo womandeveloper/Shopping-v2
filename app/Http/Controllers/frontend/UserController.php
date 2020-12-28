@@ -28,7 +28,12 @@ class UserController extends Controller
             'email' => 'required|email',            
             'password' => 'required'
         ]);
-        if(auth()->attempt(['email'=>request('email'),'password'=>request('password')],request()->has('remember_me'))){
+        $credentials = [
+            'email'=>request('email'),
+            'password'=>request('password'),
+            'is_active' => 1
+        ];
+        if(auth()->attempt($credentials, request()->has('remember_me'))){
             request()->session()->regenerate();
             //firstOrCreate:db'de bulursa ilk kaydı al bulamazsan oluştur
             //$active_cart_id = ShoppingCart::firstOrCreate(['user_id' => auth()->id()])->id;

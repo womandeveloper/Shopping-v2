@@ -6,74 +6,59 @@
 		<div class="col-md-12">
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
-					<h5 class="m-0 font-weight-bold text-primary">Sipariş Düzenleme İşlemi </h5>
+					<h5 class="m-0 font-weight-bold text-primary">Kullanıcı Düzenleme İşlemi </h5>
 				</div>
 					<div class="card-body">
-						<form action="islemler/islem.php" method="POST"  enctype="multipart/form-data"  data-parsley-validate>
-							<div class="form-row">
+						<form action="{{ route('admin.user-save', $data->id) }}" method="POST">
+							{{ csrf_field() }}
+							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
 									<label>İsim Soyisim</label>
-									<input type="text" class="form-control" required name="musteri_isim" value="İsim">
+									<input type="text" class="form-control" required name="fullname" value="{{ $data->fullname }}">
 								</div>
+							</div>
+							<div class="form-row d-flex justify-content-center mb-3">
+								<div class="form-group col-md-6">
+									<label>Şifre</label>
+									<input type="password" class="form-control" name="password" placeholder="Şifre Giriniz">
+								</div>
+							</div>
+							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
 									<label>E-Posta</label>
-									<input type="email" class="form-control"  name="musteri_mail" value="Mail">
+									<input type="email" class="form-control"  name="email" value="{{ $data->email }}">
 								</div>	
 							</div>
-							<div class="form-row">
+							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
-									<label>Telefon Numarası</label>
-									<input type="number" class="form-control" name="musteri_telefon" value="Telefon">
-								</div>
-								<div class="form-group col-md-6">
-									<label>Sipariş Başlığı</label>
-									<input type="text" class="form-control" required name="sip_baslik" value="Title">
+									<label>Telefon</label>
+									<input type="text" class="form-control telephone" required name="phone_number" value="{{ $data->detail->phone_number }}">
 								</div>
 							</div>
-							<div class="form-row">
+							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
-									<label>Ücret (TL)</label>
-									<input type="number" class="form-control" name="sip_ucret" value="Fiyat">
-								</div>
-								<div class="form-group col-md-6">
-									<label>Aciliyet</label>
-									<select id="inputState" name="sip_aciliyet" class="form-control">
-										<option selected value="Acil">Acil</option>
-										<option value="Normal">Normal</option>
-										<option value="Acelesi Yok">Acelesi Yok</option>
-									</select>
+									<label>Cep Telefonu</label>
+									<input type="text" class="form-control telephone" required name="mobile_number" value="{{ $data->detail->mobile_number }}">
 								</div>
 							</div>
-							
-							<div class="form-row">	
+							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
-									<label>Teslim Tarihi</label>
-									<input required type="date" class="form-control" name="sip_teslim_tarihi" value="date">
-								</div>
-								<div class="form-group col-md-6">
-									<label>Sipariş Durumu</label>
-									<select id="inputState" name="sip_durum" class="form-control">
-										<option selected value="Yeni Başladı">Yeni Başladı</option>
-										<option value="Devam Ediyor">Devam Ediyor</option>
-										<option value="Bitti">Bitti</option>
-									</select>
-								</div>
-							</div>			
-                            <div class="form-row d-flex justify-content-center mb-3">
-                                <div class="col-md-6">
-                                  <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                  </div>
-                                </div>
-                            </div>			
-							<div class="form-row mt-2">
-								<div class="form-group col-md-12">
-									<textarea class="ckeditor" name="sip_detay" id="editor">Detaylar</textarea>
+									<input type="checkbox" name="is_active" value="1" {{ $data->is_active ? 'checked' : '' }}>Aktif Mi
 								</div>
 							</div>
-							<input type="hidden" class="form-control" name="sip_id" value="id">
-							<button type="submit" name="siparisguncelle" class="btn btn-success">Kaydet</button>
+							<div class="form-row d-flex justify-content-center mb-3">
+								<div class="form-group col-md-6">
+									<input type="checkbox" name="is_admin" value="1" {{ $data->is_admin ? 'checked' : '' }}>Yönetici Mi
+								</div>
+							</div>
+							<div class="form-row d-flex justify-content-center mb-3">
+								<div class="form-group col-md-6">
+									<textarea style="width: 100%; height:100px;" name="address">{{ $data->detail->address }}</textarea>
+								</div>
+							</div>
+							<div class="form-row d-flex justify-content-center mb-3">
+								<button type="submit" class="btn btn-primary justify-content-center mb-3">Kaydet</button>
+							</div>
 						</form>
 					</div>
 			</div>
@@ -82,7 +67,8 @@
 </div>
 @endsection
 @section('footer')    
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.js"></script>
     <script>
-        CKEDITOR.replace( 'editor' );
+		$('.telephone').mask('(000) 000-00-00', { placeholder: "(___) ___-__-__" });
     </script>
 @endsection

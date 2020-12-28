@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('admin.home') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -23,7 +23,7 @@
     <hr class="sidebar-divider">
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{ route('admin.user-list') }}">
             <i class="fas fa-tshirt"></i>
             <span>Ürünler</span>
         </a>
@@ -37,13 +37,13 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('admin.user-list') }}">
             <i class="fas fa-users"></i>
             <span>Kullanıcılar</span></a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('admin.order-list') }}">
             <i class="fas fa-shopping-cart"></i>
             <span>Siparişler</span></a>
     </li>

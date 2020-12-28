@@ -16,10 +16,19 @@ Route::group(['prefix' => 'admin','namespace' => 'backend'], function () {
     Route::get('/logout', ['App\Http\Controllers\backend\UserController','logout'])->name('admin.logout');
     Route::group(['middleware' => 'admin'], function () {        
         Route::get('/home', ['App\Http\Controllers\backend\HomeController','index'])->name('admin.home');
+
         Route::group(['prefix' => 'user'], function () {            
-            Route::get('/', ['App\Http\Controllers\backend\UserController','list'])->name('admin.list');
-            Route::get('/add', ['App\Http\Controllers\backend\UserController','add'])->name('admin.add');
-            Route::get('/update', ['App\Http\Controllers\backend\UserController','update'])->name('admin.update');
+            Route::match(['get', 'post'], '/', ['App\Http\Controllers\backend\UserController','list'])->name('admin.user-list');
+            Route::get('/create', ['App\Http\Controllers\backend\UserController','create'])->name('admin.user-create');
+            Route::get('/update/{id}', ['App\Http\Controllers\backend\UserController','update'])->name('admin.user-update');
+            Route::post('/save/{id?}', ['App\Http\Controllers\backend\UserController','save'])->name('admin.user-save');
+            Route::get('/delete/{id}', ['App\Http\Controllers\backend\UserController','delete'])->name('admin.user-delete');
+        });
+
+        Route::group(['prefix' => 'order'], function () {
+            Route::get('/', ['App\Http\Controllers\backend\OrderController', 'list'])->name('admin.order-list');
+            Route::get('/add', ['App\Http\Controllers\backend\OrderController', 'add'])->name('admin.order-add');
+            Route::get('/update', ['App\Http\Controllers\backend\OrderController', 'update'])->name('admin.order-update');
         });
     });
 });
