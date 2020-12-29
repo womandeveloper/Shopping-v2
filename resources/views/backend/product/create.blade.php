@@ -11,7 +11,7 @@
 					<div class="card-body">
 						@include('errors.errors')
 						@include('errors.alert')
-						<form action="{{ route('admin.user-save') }}" method="POST">
+						<form action="{{ route('admin.product.save') }}" method="POST">
 							{{ csrf_field() }}
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">

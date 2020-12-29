@@ -6,7 +6,7 @@
 		<div class="col-md-12">
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
-					<h5 class="m-0 font-weight-bold text-primary">Ürün {{ $data->id>0 ? 'Düzenleme' : 'Ekleme' }} İşlemi </h5>
+					<h5 class="m-0 font-weight-bold text-primary">Ürün {{ $data->id>0 ? ($request=='show') ? 'Görüntüleme' : 'Düzenleme' : 'Ekleme' }} İşlemi </h5>
 				</div>
 					<div class="card-body">
 						@include('errors.errors')
@@ -36,6 +36,36 @@
 								<div class="form-group col-md-6">
 									<label>Description</label>
 									<textarea name="description" class="form-control" rows="10">{{ old('description', $data->description) }}</textarea>
+								</div>
+							</div>
+							<div class="form-row d-flex justify-content-center mb-3">
+								<div class="form-group col-md-6">
+									<input type="hidden" name="show_slider" value="0">
+									<input type="checkbox" name="show_slider" value="1" {{ old('show_slider', $data->detail->show_slider) ? 'checked' : '' }}>Slider
+								</div>
+							</div>
+							<div class="form-row d-flex justify-content-center mb-3">
+								<div class="form-group col-md-6">
+									<input type="hidden" name="show_today_chance" value="0">
+									<input type="checkbox" name="show_today_chance" value="1" {{ old('show_today_chance', $data->detail->show_today_chance) ? 'checked' : '' }}>Günlük
+								</div>
+							</div>
+							<div class="form-row d-flex justify-content-center mb-3">
+								<div class="form-group col-md-6">
+									<input type="hidden" name="show_featured" value="0">
+									<input type="checkbox" name="show_featured" value="1" {{ old('show_featured', $data->detail->show_featured) ? 'checked' : '' }}>Öne Çıkan
+								</div>
+							</div>
+							<div class="form-row d-flex justify-content-center mb-3">
+								<div class="form-group col-md-6">
+									<input type="hidden" name="show_bestseller" value="0">
+									<input type="checkbox" name="show_bestseller" value="1" {{ old('show_bestseller', $data->detail->show_bestseller) ? 'checked' : '' }}>Çok Satan
+								</div>
+							</div>
+							<div class="form-row d-flex justify-content-center mb-3">
+								<div class="form-group col-md-6">
+									<input type="hidden" name="show_discount" value="0">
+									<input type="checkbox" name="show_discount" value="1" {{ old('show_discount', $data->detail->show_discount) ? 'checked' : '' }}>İndirimli
 								</div>
 							</div>
 							@if ($request != 'show')								

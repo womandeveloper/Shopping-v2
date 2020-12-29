@@ -18,7 +18,7 @@ Route::group(['prefix' => 'admin','namespace' => 'backend'], function () {
         Route::get('/home', ['App\Http\Controllers\backend\HomeController','index'])->name('admin.home');
 
         Route::group(['prefix' => 'user'], function () {            
-            Route::match(['get', 'post'], '/', ['App\Http\Controllers\backend\UserController','list'])->name('admin.user.list');
+            Route::get('/', ['App\Http\Controllers\backend\UserController','list'])->name('admin.user.list');
             Route::get('/create', ['App\Http\Controllers\backend\UserController','create'])->name('admin.user.create');
             Route::get('/update/{request?}/{id}', ['App\Http\Controllers\backend\UserController','update'])->name('admin.user.update');
             Route::post('/save/{id?}', ['App\Http\Controllers\backend\UserController','save'])->name('admin.user.save');
@@ -26,7 +26,7 @@ Route::group(['prefix' => 'admin','namespace' => 'backend'], function () {
         });
 
         Route::group(['prefix' => 'category'], function () {            
-            Route::match(['get', 'post'], '/', ['App\Http\Controllers\backend\CategoryController','list'])->name('admin.category.list');
+            Route::get('/', ['App\Http\Controllers\backend\CategoryController','list'])->name('admin.category.list');
             Route::get('/update/{request?}/{id?}', ['App\Http\Controllers\backend\CategoryController','update'])->name('admin.category.update');
             Route::post('/save/{id?}', ['App\Http\Controllers\backend\CategoryController','save'])->name('admin.category.save');
             Route::get('/delete/{id}', ['App\Http\Controllers\backend\CategoryController','delete'])->name('admin.category.delete');
