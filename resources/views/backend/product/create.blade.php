@@ -1,12 +1,12 @@
 @extends('backend.layouts.master')
-@section('title', 'Ana Sayfa')
+@section('title', 'Ürün Ekleme')
 @section('content')
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
-					<h5 class="m-0 font-weight-bold text-primary">Kullanıcı Ekleme İşlemi </h5>
+					<h5 class="m-0 font-weight-bold text-primary">Ürün Ekleme İşlemi </h5>
 				</div>
 					<div class="card-body">
 						@include('errors.errors')
@@ -57,7 +57,7 @@
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
-									<textarea style="width: 100%; height:100px;" name="address" placeholder="Adres Giriniz"></textarea>
+									<textarea class="form-control" rows="10" name="address" placeholder="Adres Giriniz"></textarea>
 								</div>
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">

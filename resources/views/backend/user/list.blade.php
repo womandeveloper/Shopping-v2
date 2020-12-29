@@ -11,7 +11,7 @@
                     <h6 class="m-0 font-weight-bold text-primary d-flex align-items-center">Kullanıcı Listesi</h6>
                 </div>
                 <div class="col d-flex justify-content-end">
-                    <a href="{{ route('admin.user-create') }}" class="btn btn-danger btn-icon-split">
+                    <a href="{{ route('admin.user.create') }}" class="btn btn-danger btn-icon-split">
                         <span class="icon text-white-50">
                             <i class="fas fa-plus"></i>
                         </span>
@@ -89,17 +89,17 @@
                                 <td>{{ $list->created_at }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('admin.user-update', ['update',$list->id]) }}" class="btn btn-success btn-sm btn-icon-split">
+                                        <a href="{{ route('admin.user.update', ['update',$list->id]) }}" class="btn btn-success btn-sm btn-icon-split">
                                             <span class="icon text-white-60">
                                                 <i class="fas fa-edit"></i>
                                             </span>
                                         </a>
-                                        <a href="{{ route('admin.user-delete', $list->id) }}" onclick="return confirm('Emin Misiniz?')" class="btn btn-danger btn-sm btn-icon-split mx-1">
+                                        <a href="{{ route('admin.user.delete', $list->id) }}" onclick="return confirm('Emin Misiniz?')" class="btn btn-danger btn-sm btn-icon-split mx-1">
                                           <span class="icon text-white-60">
                                             <i class="fas fa-trash"></i>
                                           </span>
                                         </a>
-                                        <a href="{{ route('admin.user-update', ['show',$list->id,]) }}" class="btn btn-primary btn-sm btn-icon-split">
+                                        <a href="{{ route('admin.user.update', ['show',$list->id,]) }}" class="btn btn-primary btn-sm btn-icon-split">
                                             <span class="icon text-white-60">
                                             <i class="fas fa-eye"></i>
                                             </span>

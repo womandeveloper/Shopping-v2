@@ -15,8 +15,9 @@ class CategoryController extends Controller
     public function create(){
         return view('backend.category.create');
     }
-    public function update($request = 'show', $id){
-        $data = Category::find($id);
+    public function update($request = 'show', $id = 0){
+        $data = new Category;
+        if($id>0)   $data = Category::find($id);
         $all_categories = Category::all();
         return view('backend.category.update', compact('data', 'all_categories', 'request'));
     }

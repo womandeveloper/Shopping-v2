@@ -23,7 +23,7 @@
     <hr class="sidebar-divider">
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('admin.category.list') }}">
+        <a class="nav-link collapsed" href="{{ route('admin.product.list') }}">
             <i class="fas fa-tshirt"></i>
             <span>Ürünler</span>
         </a>
@@ -37,7 +37,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.user-list') }}">
+        <a class="nav-link" href="{{ route('admin.user.list') }}">
             <i class="fas fa-users"></i>
             <span>Kullanıcılar</span></a>
     </li>

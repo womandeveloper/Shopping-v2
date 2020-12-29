@@ -75,12 +75,12 @@ class UserController extends Controller
             $data_detail
         );
         return redirect()
-                ->route('admin.user-update', $entry->id)
+                ->route('admin.user.update', $entry->id)
                 ->with('message', ($id>0 ? 'Güncellendi' : 'Kaydedildi'))
                 ->with('message_type', 'success');
     }
     public function delete($id){
         User::destroy($id);
-        return redirect()->route('admin.user-list')->with('message', 'Kayıt Silindi')->with('message_type', 'success');
+        return redirect()->route('admin.user.list')->with('message', 'Kayıt Silindi')->with('message_type', 'success');
     }
 }

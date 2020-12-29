@@ -11,7 +11,7 @@
 					<div class="card-body">
 						@include('errors.errors')
 						@include('errors.alert')
-						<form action="{{ route('admin.user-save', $data->id) }}" method="POST">
+						<form action="{{ route('admin.user.save', $data->id) }}" method="POST">
 							{{ csrf_field() }}
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
@@ -57,7 +57,7 @@
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
-									<textarea style="width: 100%; height:100px;" name="address">{{ old('address', $data->detail->address) }}</textarea>
+									<textarea class="form-control" rows="10" name="address">{{ old('address', $data->detail->address) }}</textarea>
 								</div>
 							</div>
 							@if ($request == 'update')								
