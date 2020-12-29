@@ -45,6 +45,9 @@
                         </tr>
                     </tfoot>
                     <tbody>
+                        @if (count($lists) == 0)
+                            <tr><td colspan="6" class="text-center">Kayıt Bulunamadı!</td></tr>
+                        @endif
                         @foreach ($lists as $list)
                             <tr>
                                 <td>{{ $list->fullname }}</td>
@@ -86,7 +89,7 @@
                                 <td>{{ $list->created_at }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('admin.user-update', $list->id) }}" class="btn btn-success btn-sm btn-icon-split">
+                                        <a href="{{ route('admin.user-update', ['update',$list->id]) }}" class="btn btn-success btn-sm btn-icon-split">
                                             <span class="icon text-white-60">
                                                 <i class="fas fa-edit"></i>
                                             </span>
@@ -96,7 +99,7 @@
                                             <i class="fas fa-trash"></i>
                                           </span>
                                         </a>
-                                        <a href="#" class="btn btn-primary btn-sm btn-icon-split">
+                                        <a href="{{ route('admin.user-update', ['show',$list->id,]) }}" class="btn btn-primary btn-sm btn-icon-split">
                                             <span class="icon text-white-60">
                                             <i class="fas fa-eye"></i>
                                             </span>

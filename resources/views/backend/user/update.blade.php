@@ -60,9 +60,11 @@
 									<textarea style="width: 100%; height:100px;" name="address">{{ old('address', $data->detail->address) }}</textarea>
 								</div>
 							</div>
-							<div class="form-row d-flex justify-content-center mb-3">
-								<button type="submit" class="btn btn-primary justify-content-center mb-3">Kaydet</button>
-							</div>
+							@if ($request == 'update')								
+								<div class="form-row d-flex justify-content-center mb-3">
+									<button type="submit" class="btn btn-primary justify-content-center mb-3">Kaydet</button>
+								</div>
+							@endif
 						</form>
 					</div>
 			</div>

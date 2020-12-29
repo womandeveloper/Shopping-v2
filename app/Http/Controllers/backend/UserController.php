@@ -42,14 +42,14 @@ class UserController extends Controller
     }
     public function list(){
         $lists = User::orderByDesc('created_at')->get();
-        return view('backend.user-list', compact('lists'));
+        return view('backend.user.list', compact('lists'));
     }
     public function create(){
-        return view('backend.user-create');
+        return view('backend.user.create');
     }
-    public function update($id){
+    public function update($request = 'show',$id){
         $data = User::find($id);
-        return view('backend.user-update', compact('data'));
+        return view('backend.user.update', compact('data', 'request'));
     }
     public function save($id = 0){
         $this->validate(request(), [
