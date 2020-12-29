@@ -26,6 +26,6 @@ class User extends Authenticatable
 
     public function detail()
     {
-        return $this->hasOne('App\Models\UserDetail');
+        return $this->hasOne('App\Models\UserDetail')->withDefault();
     }
 }

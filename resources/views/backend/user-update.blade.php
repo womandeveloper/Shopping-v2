@@ -16,7 +16,7 @@
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
 									<label>İsim Soyisim</label>
-									<input type="text" class="form-control" name="fullname" value="{{ $data->fullname }}">
+									<input type="text" class="form-control" name="fullname" value="{{ old('fullname', $data->fullname) }}">
 								</div>
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">
@@ -28,34 +28,36 @@
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
 									<label>E-Posta</label>
-									<input type="email" class="form-control"  name="email" value="{{ $data->email }}">
+									<input type="email" class="form-control"  name="email" value="{{ old('email', $data->email) }}">
 								</div>	
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
 									<label>Telefon</label>
-									<input type="text" class="form-control telephone" name="phone_number" value="{{ $data->detail->phone_number }}">
+									<input type="text" class="form-control telephone" name="phone_number" value="{{ old('phone_number', $data->detail->phone_number) }}">
 								</div>
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
 									<label>Cep Telefonu</label>
-									<input type="text" class="form-control telephone" name="mobile_number" value="{{ $data->detail->mobile_number }}">
+									<input type="text" class="form-control telephone" name="mobile_number" value="{{ old('mobile_number', $data->detail->mobile_number) }}">
 								</div>
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
-									<input type="checkbox" name="is_active" value="1" {{ $data->is_active ? 'checked' : '' }}>Aktif Mi
+									<input type="hidden" name="is_active" value="0">
+									<input type="checkbox" name="is_active" value="1" {{ old('is_active', $data->is_active) ? 'checked' : '' }}>Aktif Mi
 								</div>
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
-									<input type="checkbox" name="is_admin" value="1" {{ $data->is_admin ? 'checked' : '' }}>Yönetici Mi
+									<input type="hidden" name="is_admin" value="0">
+									<input type="checkbox" name="is_admin" value="1" {{ old('is_admin', $data->is_admin) ? 'checked' : '' }}>Yönetici Mi
 								</div>
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
-									<textarea style="width: 100%; height:100px;" name="address">{{ $data->detail->address }}</textarea>
+									<textarea style="width: 100%; height:100px;" name="address">{{ old('address', $data->detail->address) }}</textarea>
 								</div>
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">

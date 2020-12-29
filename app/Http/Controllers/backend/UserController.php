@@ -41,7 +41,7 @@ class UserController extends Controller
         return redirect()->route('admin.login');
     }
     public function list(){
-        $lists = User::orderByDesc('created_at')->paginate(8);
+        $lists = User::orderByDesc('created_at')->get();
         return view('backend.user-list', compact('lists'));
     }
     public function create(){
@@ -60,8 +60,8 @@ class UserController extends Controller
         if(request()->filled('password')){
             $data['password'] = Hash::make(request('password'));
         }
-        $data['is_active'] = (request()->has('is_active')) ? 1 : 0;
-        $data['is_admin'] = (request()->has('is_admin')) ? 1 : 0;
+        $data['is_active'] = (request()->has('is_active') && request('is_active')) ? 1 : 0;
+        $data['is_admin'] = (request()->has('is_admin') && request('is_admin')) ? 1 : 0;
         if($id > 0){
             $entry = User::where('id', $id)->firstOrFail();
             $entry->update($data);
@@ -78,5 +78,9 @@ class UserController extends Controller
                 ->route('admin.user-update', $entry->id)
                 ->with('message', ($id>0 ? 'Güncellendi' : 'Kaydedildi'))
                 ->with('message_type', 'success');
+    }
+    public function delete($id){
+        User::destroy($id);
+        return redirect()->route('admin.user-list')->with('message', 'Kayıt Silindi')->with('message_type', 'success');
     }
 }
