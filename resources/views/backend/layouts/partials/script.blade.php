@@ -41,3 +41,4 @@
 <script src="/backend/js/demo/datatables-demo.js"></script>
 
 <script src="/backend/vendor/ckeditor/ckeditor.js"></script>
+<script src="/js/app.js"></script>

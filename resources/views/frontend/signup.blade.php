@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row" style="justify-content: center">
             <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-                @include('frontend.layouts.partials.errors')
+                @include('errors.errors')
                 <form action="{{ route('sign_up') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="login-form">

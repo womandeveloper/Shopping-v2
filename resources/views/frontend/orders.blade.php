@@ -3,7 +3,7 @@
 @section('content')
 <div class="checkout-area pt-30 pb-30">
     <div class="container">
-        @include('frontend.layouts.partials.alert')
+        @include('errors.alert')
         <div class="row">
             <div class="col-lg-12">
                 <div class="your-order">

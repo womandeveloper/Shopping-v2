@@ -9,12 +9,14 @@
 					<h5 class="m-0 font-weight-bold text-primary">Kullanıcı Düzenleme İşlemi </h5>
 				</div>
 					<div class="card-body">
+						@include('errors.errors')
+						@include('errors.alert')
 						<form action="{{ route('admin.user-save', $data->id) }}" method="POST">
 							{{ csrf_field() }}
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
 									<label>İsim Soyisim</label>
-									<input type="text" class="form-control" required name="fullname" value="{{ $data->fullname }}">
+									<input type="text" class="form-control" name="fullname" value="{{ $data->fullname }}">
 								</div>
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">
@@ -32,13 +34,13 @@
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
 									<label>Telefon</label>
-									<input type="text" class="form-control telephone" required name="phone_number" value="{{ $data->detail->phone_number }}">
+									<input type="text" class="form-control telephone" name="phone_number" value="{{ $data->detail->phone_number }}">
 								</div>
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
 									<label>Cep Telefonu</label>
-									<input type="text" class="form-control telephone" required name="mobile_number" value="{{ $data->detail->mobile_number }}">
+									<input type="text" class="form-control telephone" name="mobile_number" value="{{ $data->detail->mobile_number }}">
 								</div>
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">

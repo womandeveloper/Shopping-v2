@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                @include('frontend.layouts.partials.alert')
+                @include('errors.alert')
                 @if (count(Cart::content())>0)
                     <div class="table-content table-responsive">
                             <table class="table">

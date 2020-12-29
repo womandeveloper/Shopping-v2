@@ -13,7 +13,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
     use SoftDeletes;
     protected $fillable = [
-        'fullname', 'email', 'password','activation_key','is_active'
+        'fullname', 'email', 'password','activation_key','is_active','is_admin'
     ];
     
     protected $hidden = [

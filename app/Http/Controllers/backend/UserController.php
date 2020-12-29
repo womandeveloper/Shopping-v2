@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Models\User;
+use App\Models\UserDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -50,16 +51,32 @@ class UserController extends Controller
         $data = User::find($id);
         return view('backend.user-update', compact('data'));
     }
-    public function save($id){
+    public function save($id = 0){
         $this->validate(request(), [
             'fullname' => 'required',
             'email' => 'required|email'
         ]);
-        $entry = User::where('id', $id)->firstOrFail();
         $data = request()->only('fullname', 'email');
         if(request()->filled('password')){
             $data['password'] = Hash::make(request('password'));
         }
-        $entry->update($data);
+        $data['is_active'] = (request()->has('is_active')) ? 1 : 0;
+        $data['is_admin'] = (request()->has('is_admin')) ? 1 : 0;
+        if($id > 0){
+            $entry = User::where('id', $id)->firstOrFail();
+            $entry->update($data);
+        }else{
+            $entry = User::create($data);
+        }
+
+        $data_detail = request()->only('address','phone_number','mobile_number');
+        UserDetail::updateOrCreate(
+            ['user_id' => $entry->id],
+            $data_detail
+        );
+        return redirect()
+                ->route('admin.user-update', $entry->id)
+                ->with('message', ($id>0 ? 'Güncellendi' : 'Kaydedildi'))
+                ->with('message_type', 'success');
     }
 }
