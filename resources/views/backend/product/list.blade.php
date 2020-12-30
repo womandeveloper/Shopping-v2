@@ -27,6 +27,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Resim</th>
                             <th>Adı</th>
                             <th>Slug</th>
                             <th>Fiyatı</th>
@@ -38,6 +39,7 @@
                     <tfoot>
                         <tr>
                             <th>#</th>
+                            <th>Resim</th>
                             <th>Adı</th>
                             <th>Slug</th>
                             <th>Fiyatı</th>
@@ -53,6 +55,9 @@
                         @foreach ($lists as $list)
                             <tr>
                                 <td>{{ $list->id }}</td>
+                                <td>
+                                    <img style="width: 150px; height:100px; margin:auto; display:flex;" src="{{ (file_exists('uploads/products/'.$list->detail->product_image)) ? asset('uploads/products/'.$list->detail->product_image) : asset('uploads/empty-picture.png') }}">
+                                </td>
                                 <td>{{ $list->product_name }}</td>
                                 <td>{{ $list->slug }}</td>
                                 <td>{{ $list->price }}</td>
