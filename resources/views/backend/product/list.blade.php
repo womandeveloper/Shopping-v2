@@ -8,7 +8,7 @@
         <div class="card-header py-3">
             <div class="row">
                 <div class="col d-flex">
-                    <h6 class="m-0 font-weight-bold text-primary d-flex align-items-center">Kategory Listesi</h6>
+                    <h6 class="m-0 font-weight-bold text-primary d-flex align-items-center">Ürünler Listesi</h6>
                 </div>
                 <div class="col d-flex justify-content-end">
                     <a href="{{ route('admin.product.update', 'create') }}" class="btn btn-danger btn-icon-split">

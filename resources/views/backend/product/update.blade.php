@@ -11,7 +11,7 @@
 					<div class="card-body">
 						@include('errors.errors')
 						@include('errors.alert')
-						<form action="{{ route('admin.product.save', $data->id) }}" method="POST">
+						<form action="{{ route('admin.product.save', $data->id) }}" enctype="multipart/form-data" method="POST" >
 							{{ csrf_field() }}
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
@@ -68,6 +68,25 @@
 									<input type="checkbox" name="show_discount" value="1" {{ old('show_discount', $data->detail->show_discount) ? 'checked' : '' }}>İndirimli
 								</div>
 							</div>
+							<div class="form-row d-flex justify-content-center mb-3">
+								<div class="form-group col-md-6">
+									<label>Kategoriler</label>
+									<select name="categories[]" multiple id="categories" class="form-control">
+										@foreach ($all_categories as $category)
+											<option value="{{ $category->id }}" {{ collect(old('categories', $product_category))->contains($category->id) ? 'selected' : '' }}>{{ $category->category_name }}</option>
+										@endforeach
+									</select>	
+								</div>
+							</div>
+							<div class="form-row d-flex justify-content-center mb-3">
+								<div class="form-group col-md-6">
+									@if ($data->detail->product_image != null)
+										<img class="thumbnail pull-left" src="/uploads/products/{{ $data->detail->product_image }}" style="height:100px; margin-bottom:20px;display:block;">
+									@endif
+									<label>Resim</label>
+									<input type="file" class="form-control" name="product_file">
+								</div>
+							</div>
 							@if ($request != 'show')								
 								<div class="form-row d-flex justify-content-center mb-3">
 									<button type="submit" class="btn btn-primary justify-content-center mb-3">Kaydet</button>
@@ -79,4 +98,17 @@
 		</div>
 	</div>
 </div>
+@endsection
+@section('head')	
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+@endsection
+@section('footer')
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+	<script>
+		$(function(){
+			$('#categories').select2({
+				placeholder: 'Lütfen Kategori Seçiniz'
+			});			
+		});
+	</script>
 @endsection

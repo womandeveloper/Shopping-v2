@@ -21,10 +21,8 @@ class CategoryProductTableSeeder extends Seeder
         DB::table('category_product')->truncate();
         $number_category = Category::count();
         $number_product = Product::count();
-        for($i=1; $i<=$number_category; $i++){
-            for($j=1; $j<=10; $j++){
-                DB::table('category_product')->insert(['category_id'=>$i,'product_id'=>$j]);
-            }
+        for($j=1; $j<=10; $j++){
+            DB::table('category_product')->insert(['category_id'=>$j,'product_id'=>$j]);
         }
         Schema::enableForeignKeyConstraints();
     }
