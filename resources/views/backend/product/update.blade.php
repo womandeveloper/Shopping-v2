@@ -35,7 +35,7 @@
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
 									<label>Description</label>
-									<textarea name="description" class="form-control" rows="10">{{ old('description', $data->description) }}</textarea>
+									<textarea name="description" id="description" class="form-control" rows="10">{{ old('description', $data->description) }}</textarea>
 								</div>
 							</div>
 							<div class="form-row d-flex justify-content-center mb-3">
@@ -104,11 +104,19 @@
 @endsection
 @section('footer')
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.15.1/plugins/autogrow/plugin.min.js"></script>
 	<script>
 		$(function(){
 			$('#categories').select2({
 				placeholder: 'Lütfen Kategori Seçiniz'
 			});			
 		});
+		var options = {
+			uiColor: '#4e73df',
+			extraPlugins: 'autogrow',
+			//autoGrow_minHeight: 300,
+			autoGrow_maxHeight: 600
+		}
+		CKEDITOR.replace('description', options);
 	</script>
 @endsection
