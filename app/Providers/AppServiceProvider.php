@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Product;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +28,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // View::share('statistics', $statistics);
+        View::composer(['backend.*'],function($view){
+            $end_time = now()->addMinutes(10);
+            Cache::flush();
+            $statistics = Cache::remember('statistics', $end_time, function(){
+                return [
+                    'waiting_order' => Order::where('status','Siparişiniz alındı')->count(),
+                    'completed_order' => Order::where('status','Sipariş Tamamlandı')->count(),
+                    'total_product' => Product::count(),
+                    'total_user' => User::count()
+                ];
+            });
+            $view->with('statistics', $statistics);
+        });
     }
 }
