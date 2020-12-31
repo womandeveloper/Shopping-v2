@@ -10,14 +10,6 @@
                 <div class="col d-flex">
                     <h6 class="m-0 font-weight-bold text-primary d-flex align-items-center">Sipariş Listesi</h6>
                 </div>
-                <div class="col d-flex justify-content-end">
-                    <a href="{{ route('admin.order.update', 'create') }}" class="btn btn-danger btn-icon-split">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                        <span class="text">Yeni</span>
-                    </a>
-                </div>
             </div>
         </div>
         <div class="card-body">
@@ -27,20 +19,22 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Kullanıcı Adı</th>
                             <th>Sipariş Adı</th>
                             <th>Telefon</th>
                             <th>Adres</th>
-                            <th>Fiyatı</th>
+                            <th>Sipariş Tutarı</th>
                             <th>İşlem</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>#</th>
+                            <th>Kullanıcı Adı</th>
                             <th>Sipariş Adı</th>
                             <th>Telefon</th>
                             <th>Adres</th>
-                            <th>Fiyatı</th>
+                            <th>Sipariş Tutarı</th>
                             <th>İşlem</th>
                         </tr>
                     </tfoot>
@@ -51,10 +45,11 @@
                         @foreach ($lists as $list)
                             <tr>
                                 <td>{{ $list->id }}</td>
+                                <td>{{ $list->cart->user->fullname }}</td>
                                 <td>{{ $list->fullname }}</td>
                                 <td>{{ ($list->phone_number!=null) ? $list->phone_number : $list->mobile_number }}</td>
                                 <td>{{ $list->address }}</td>
-                                <td>{{ $list->order_price }}</td>
+                                <td>{{ $list->order_price * ((100+config('cart.tax'))/100) }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('admin.order.update', ['update', $list->id]) }}" class="btn btn-success btn-sm btn-icon-split">

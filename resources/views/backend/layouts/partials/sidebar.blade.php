@@ -43,7 +43,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.order-list') }}">
+        <a class="nav-link" href="{{ route('admin.order.list') }}">
             <i class="fas fa-shopping-cart"></i>
             <span>Siparişler</span></a>
     </li>

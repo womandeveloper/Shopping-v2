@@ -37,4 +37,8 @@ class ShoppingCart extends Model
     public function order_product_piece(){
         return DB::table('cart_products')->where('cart_id', $this->id)->sum('piece');
     }
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

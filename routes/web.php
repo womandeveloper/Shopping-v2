@@ -41,9 +41,10 @@ Route::group(['prefix' => 'admin','namespace' => 'backend'], function () {
         });
 
         Route::group(['prefix' => 'order'], function () {
-            Route::get('/', ['App\Http\Controllers\backend\OrderController', 'list'])->name('admin.order-list');
-            Route::get('/add', ['App\Http\Controllers\backend\OrderController', 'add'])->name('admin.order-add');
-            Route::get('/update', ['App\Http\Controllers\backend\OrderController', 'update'])->name('admin.order-update');
+            Route::get('/', ['App\Http\Controllers\backend\OrderController', 'list'])->name('admin.order.list');
+            Route::get('/update/{request?}/{id?}', ['App\Http\Controllers\backend\OrderController','update'])->name('admin.order.update');
+            Route::post('/save/{id?}', ['App\Http\Controllers\backend\OrderController','save'])->name('admin.order.save');
+            Route::get('/delete/{id}', ['App\Http\Controllers\backend\OrderController','delete'])->name('admin.order.delete');
         });
     });
 });

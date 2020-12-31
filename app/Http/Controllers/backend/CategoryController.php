@@ -12,9 +12,6 @@ class CategoryController extends Controller
         $lists = Category::with('parent_category')->get();
         return view('backend.category.list', compact('lists'));
     }
-    public function create(){
-        return view('backend.category.create');
-    }
     public function update($request = 'show', $id = 0){
         $data = new Category;
         if($id>0)   $data = Category::find($id);
