@@ -104,7 +104,7 @@
 @endsection
 @section('footer')
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.15.1/plugins/autogrow/plugin.min.js"></script>
+
 	<script>
 		$(function(){
 			$('#categories').select2({

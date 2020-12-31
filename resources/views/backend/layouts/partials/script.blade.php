@@ -40,7 +40,9 @@
 <!-- Page level custom scripts -->
 <script src="/backend/js/demo/datatables-demo.js"></script>
 
-<script src="/backend/vendor/ckeditor/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.15.1/plugins/autogrow/plugin.min.js"></script>
+
 <script src="/js/app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.js"></script>
 <script>
