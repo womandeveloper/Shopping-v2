@@ -6,8 +6,6 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
     <!-- Content Row -->
@@ -23,12 +21,12 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ ceil($statistics['waiting_order']/$statistics['total_product']).'%' }}</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ ceil($statistics['waiting_order']*100/$statistics['total_order']).'%' }}</div>
                                    </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
                                         <div class="progress-bar bg-info" role="progressbar"
-                                            style="width: {{ ceil($statistics['waiting_order']/$statistics['total_product']).'%' }}" aria-valuenow="50" aria-valuemin="0"
+                                            style="width: {{ ceil($statistics['waiting_order']*100/$statistics['total_order']).'%' }}" aria-valuenow="50" aria-valuemin="0"
                                             aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -57,12 +55,12 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ ceil($statistics['completed_order']/$statistics['total_product']).'%' }}</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ ceil($statistics['completed_order']*100/$statistics['total_order']).'%' }}</div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
                                         <div class="progress-bar bg-info" role="progressbar"
-                                            style="width: {{ ceil($statistics['completed_order']/$statistics['total_product']).'%' }}" aria-valuenow="50" aria-valuemin="0"
+                                            style="width: {{ ceil($statistics['completed_order']*100/$statistics['total_order']).'%' }}" aria-valuenow="50" aria-valuemin="0"
                                             aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -116,8 +114,19 @@
             </div>
         </div>
     </div>
-    <div class="row" style="width: 500px;height:500px;">
-        <canvas id="myChart" width="400" height="400"></canvas>
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Satışlar</h1>
+    </div>
+
+    <div class="row" style="height:500px!important;">
+        <div class="col-md-6" style="height:100%;">
+            <canvas id="best_seller" height="100%"></canvas>
+        </div>
+        <div class="col-md-6" style="height:100%;">
+            <canvas id="month_seller" height="100%"></canvas>
+        </div>
     </div>
 
 </div>
@@ -125,26 +134,54 @@
 @section('footer')
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
+        @php
+            $labels = "";
+            $data = "";
+            foreach($best_seller as $report) {
+                $labels .= "\"$report->product_name\", ";
+                $data .= "$report->piece, ";
+            }
+        @endphp
+        var ctx = document.getElementById('best_seller').getContext('2d');
+        var best_seller = new Chart(ctx, {
+            type: 'horizontalBar',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: [{!! $labels !!}],
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
+                    label: 'En Çok Satışlar',
+                    data: [{!! $data !!}],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{ ticks: { beginAtZero: true } }]
+                }
+            }
+        });
+
+        @php
+            $labels = "";
+            $data = "";
+            foreach($month_seller as $report) {
+                $labels .= "\"$report->month\", ";
+                $data .= "$report->piece, ";
+            }
+        @endphp
+        var ctx = document.getElementById('month_seller').getContext('2d');
+        var month_seller = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: [{!! $labels !!}],
+                datasets: [{
+                    label: 'Aylara Göre Satışlar',
+                    data: [{!! $data !!}],
+                    borderColor: [
                         'rgba(75, 192, 192, 1)',
                         'rgba(153, 102, 255, 1)',
                         'rgba(255, 159, 64, 1)'
@@ -154,11 +191,7 @@
             },
             options: {
                 scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                    xAxes: [{ ticks: { beginAtZero: true } }]
                 }
             }
         });

@@ -2,27 +2,33 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
     public function index(){
 
-        $bestseller = DB::select("
-            SELECT product.product_name, SUM(cart_products.piece) piece
-            FROM orders 
-            INNER JOIN carts as c ON c.id = or.cart_id
-            INNER JOIN cart_products as cp ON c.id = cp.sepet_id
+        $best_seller = DB::select("
+            SELECT p.product_name , SUM(cp.piece) piece
+            FROM orders as ord 
+            INNER JOIN carts as c ON c.id = ord.cart_id
+            INNER JOIN cart_products as cp ON c.id = cp.cart_id 
             INNER JOIN product as p ON p.id = cp.product_id
             GROUP BY p.product_name
-            ORDER BY SUM(cart_products.piece) DESC
+            ORDER BY SUM(cp.piece) DESC
         ");
-        print_r($bestseller);exit;
-        return view('backend.index');
+        $month_seller = DB::select("
+            SELECT
+                DATE_FORMAT(ord.created_at, '%Y-%m') month, sum(cp.piece) piece
+            FROM orders as ord 
+            INNER JOIN carts as c ON c.id = ord.cart_id
+            INNER JOIN cart_products as cp ON c.id = cp.cart_id 
+            GROUP BY DATE_FORMAT(ord.created_at, '%Y-%m')
+            ORDER BY DATE_FORMAT(ord.created_at, '%Y-%m')
+        ");
+        return view('backend.index', compact('best_seller','month_seller'));
         
         // $end_time = now()->addMinutes(10);
 

@@ -36,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
                 return [
                     'waiting_order' => Order::where('status','Siparişiniz alındı')->count(),
                     'completed_order' => Order::where('status','Sipariş Tamamlandı')->count(),
+                    'total_order' => Order::count(),
                     'total_product' => Product::count(),
                     'total_user' => User::count()
                 ];
