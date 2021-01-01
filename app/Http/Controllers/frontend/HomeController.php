@@ -27,6 +27,8 @@ class HomeController extends Controller
         $urunler_indirimli = ProductDetail::with('product')->where('show_discount',1)->take(5)->get();
 
         return view('frontend.index',compact('categories','product_slider','all_categories'));
+        // config('setting.slider');
+        // get_setting('slider');
     }
 }
 
