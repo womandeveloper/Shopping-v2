@@ -29,7 +29,7 @@
         </a>
     </li>
 
-    <li class="nav-item active">
+    <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.category.list') }}">
             <i class="fas fa-pen"></i>
             <span>Kategoriler</span>

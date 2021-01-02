@@ -47,4 +47,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.js"></script>
 <script>
     $('.telephone').mask('(000) 000-00-00', { placeholder: "(___) ___-__-__" });
+    $('#accordionSidebar li a').filter(function(){
+        return this.href == location.href.replace(/#*/,"");
+    }).parents('li').addClass('active');
 </script>
