@@ -1769,7 +1769,6 @@ textarea:focus {
 		color: #ffffff;
 }
 .hb-menu nav > ul > li > a::after {
-	content: "\f107";
 	position: absolute;
 	top: 8px;
 	right: 15px;
@@ -1778,8 +1777,8 @@ textarea:focus {
 	transition: all 0.3s ease-in-out;
 	color: #242424;
 }
-.hb-menu nav > ul > li:nth-child(n+5) > a::after {
-	content: none;
+.hb-menu nav > ul > li:nth-child(2) > a::after {
+	content: "\f107";
 }
 .hb-menu nav > ul > li:hover  a::after {
 	transform: rotate(180deg);

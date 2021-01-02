@@ -79,11 +79,11 @@
                         </div>
                         <ul class="des">
                             <li>
-                                <span>Address: </span>
+                                <span>Adress: </span>
                                 6688Princess Road, London, Greater London BAS 23JK, UK
                             </li>
                             <li>
-                                <span>Phone: </span>
+                                <span>Telefon: </span>
                                 <a href="#">(+123) 123 321 345</a>
                             </li>
                             <li>
@@ -96,7 +96,7 @@
                     <!-- Begin Footer Block Area -->
                     <div class="col-lg-2 col-md-3 col-sm-6">
                         <div class="footer-block">
-                            <h3 class="footer-block-title">Product</h3>
+                            <h3 class="footer-block-title">Ürünlerimiz</h3>
                             <ul>
                                 <li><a href="#">Prices drop</a></li>
                                 <li><a href="#">New products</a></li>
@@ -109,7 +109,7 @@
                     <!-- Begin Footer Block Area -->
                     <div class="col-lg-2 col-md-3 col-sm-6">
                         <div class="footer-block">
-                            <h3 class="footer-block-title">Our company</h3>
+                            <h3 class="footer-block-title">Şirketimiz</h3>
                             <ul>
                                 <li><a href="#">Delivery</a></li>
                                 <li><a href="#">Legal Notice</a></li>
@@ -122,7 +122,7 @@
                     <!-- Begin Footer Block Area -->
                     <div class="col-lg-4">
                         <div class="footer-block">
-                            <h3 class="footer-block-title">Follow Us</h3>
+                            <h3 class="footer-block-title">Bize Ulaşın</h3>
                             <ul class="social-link">
                                 <li class="twitter">
                                     <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
@@ -181,31 +181,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- Begin Footer Links Area -->
-                    <div class="footer-links">
-                        <ul>
-                            <li><a href="#">Online Shopping</a></li>
-                            <li><a href="#">Promotions</a></li>
-                            <li><a href="#">My Orders</a></li>
-                            <li><a href="#">Help</a></li>
-                            <li><a href="#">Customer Service</a></li>
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#">Most Populars</a></li>
-                            <li><a href="#">New Arrivals</a></li>
-                            <li><a href="#">Special Products</a></li>
-                            <li><a href="#">Manufacturers</a></li>
-                            <li><a href="#">Our Stores</a></li>
-                            <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Payments</a></li>
-                            <li><a href="#">Warantee</a></li>
-                            <li><a href="#">Refunds</a></li>
-                            <li><a href="#">Checkout</a></li>
-                            <li><a href="#">Discount</a></li>
-                            <li><a href="#">Refunds</a></li>
-                            <li><a href="#">Policy Shipping</a></li>
-                        </ul>
-                    </div>
-                    <!-- Footer Links Area End Here -->
                     <!-- Begin Footer Payment Area -->
                     <div class="payment text-center">
                         <a href="#">
@@ -215,7 +190,7 @@
                     <!-- Footer Payment Area End Here -->
                     <!-- Begin Copyright Area -->
                     <div class="copyright text-center pt-30 pb-50">
-                        <span><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></span>
+                        <span><a target="_blank" href="#">{{ date('Y') }} Tüm Hakları Saklıdır</a></span>
                     </div>
                     <!-- Copyright Area End Here -->
                 </div>
