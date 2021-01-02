@@ -56,6 +56,7 @@ Route::group(['namespace' => 'frontend'], function(){
     Route::get('/product_search',[ProductController::class,'search'])->name('product_search');
     Route::post('/product_search',[ProductController::class,'search'])->name('product_search');
 
+
     Route::group(['prefix' => 'cart'], function () {
         Route::get('/',[CartController::class,'index'])->name('shopping_cart');
         Route::post('/add',[CartController::class, 'add'])->name('shopping_add');
@@ -70,6 +71,7 @@ Route::group(['namespace' => 'frontend'], function(){
     Route::group(['middleware'=>'auth'], function(){
         Route::get('/orders',[OrderController::class,'index'])->name('orders');
         Route::get('/orders/{id}',[OrderController::class,'detail'])->name('order');
+        Route::post('/comment-save', [ProductController::class,'commentSave'])->name('commentSave');
     });
 
     Route::group(['prefix'=>'user'], function(){

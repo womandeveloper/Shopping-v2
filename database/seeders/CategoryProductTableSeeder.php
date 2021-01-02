@@ -19,10 +19,9 @@ class CategoryProductTableSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
         DB::table('category_product')->truncate();
-        $number_category = Category::count();
-        $number_product = Product::count();
-        for($j=1; $j<=10; $j++){
-            DB::table('category_product')->insert(['category_id'=>$j,'product_id'=>$j]);
+        $counter = min(Category::count() , Product::count());
+        for($i=1; $i<=$counter; $i++){
+            DB::table('category_product')->insert(['category_id'=>$i,'product_id'=>$i]);
         }
         Schema::enableForeignKeyConstraints();
     }
