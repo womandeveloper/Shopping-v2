@@ -176,7 +176,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="blog-left-sidebar.html">Blog</a></li>
-                                <li><a href="contact.html">İletişim</a></li>
+                                <li><a href="contact.html">Hakkımızda</a></li>
                                 <li><a href="contact.html">İletişim</a></li>
                                 <!-- Begin Header Bottom Menu Information Area -->
                                 <li class="hb-info f-right p-0 d-sm-none d-lg-block">
