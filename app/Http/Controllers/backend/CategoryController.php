@@ -40,7 +40,7 @@ class CategoryController extends Controller
             $entry = Category::create($data);
         }
         return redirect()
-                ->route('admin.category.update', $entry->id)
+                ->route('admin.category.update', ['update',$entry->id])
                 ->with('message', ($id>0 ? 'Güncellendi' : 'Kaydedildi'))
                 ->with('message_type', 'success');
     }

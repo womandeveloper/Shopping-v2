@@ -75,7 +75,7 @@ class UserController extends Controller
             $data_detail
         );
         return redirect()
-                ->route('admin.user.update', $entry->id)
+                ->route('admin.user.update', ['update',$entry->id])
                 ->with('message', ($id>0 ? 'Güncellendi' : 'Kaydedildi'))
                 ->with('message_type', 'success');
     }

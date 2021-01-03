@@ -8,7 +8,7 @@
             <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
                 @include('errors.errors')
                 <form action="{{ route('sign_up') }}" method="POST">
-                    {{ csrf_field() }}
+                    @csrf
                     <div class="login-form">
                         <h4 class="login-title">Kaydol</h4>
                         <div class="row">

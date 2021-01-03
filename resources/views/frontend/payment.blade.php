@@ -9,7 +9,7 @@
                 <div class="your-order">
                     <div class="bg-content">
                         <form action="{{ route('pay') }}" method="post">
-                            {{ csrf_field() }}
+                            @csrf
                             <div class="row">
                                 <div class="col-md-5">
                                     <h3>Ödeme Bilgileri</h3>

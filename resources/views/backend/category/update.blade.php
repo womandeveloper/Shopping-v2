@@ -12,7 +12,7 @@
 						@include('errors.errors')
 						@include('errors.alert')
 						<form action="{{ route('admin.category.save', $data->id) }}" method="POST">
-							{{ csrf_field() }}
+							@csrf
 							<div class="form-row d-flex justify-content-center mb-3">
 								<div class="form-group col-md-6">
 									<label>Üst Kategori</label>

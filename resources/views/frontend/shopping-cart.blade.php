@@ -24,7 +24,7 @@
                                         <tr>
                                             <td class="test">
                                                 <form action="{{ route('shopping_remove', $product_cart->rowId) }}" method="post">
-                                                    {{ csrf_field() }}
+                                                    @csrf
                                                     {{ method_field('DELETE') }}
                                                     <button class="btn" type="submit"><i class="fa fa-times"></i></button>
                                                 </form>
@@ -54,7 +54,7 @@
                             <div class="coupon-all">
                                 <div class="coupon">
                                     <form action="{{ route('shopping_destroy') }}" method="POST">
-                                        {{ csrf_field() }}
+                                        @csrf
                                         {{ method_field('DELETE') }}
                                         <input class="button" name="update_cart" value="Sepeti Boşalt" type="submit">
                                     </form>

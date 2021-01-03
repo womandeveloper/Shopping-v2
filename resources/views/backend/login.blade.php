@@ -39,7 +39,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">Hoşgeldiniz</h1>
                                     </div>
                                     <form class="user" action="{{ route('admin.login') }}" method="POST">
-                                        {{ csrf_field() }}
+                                        @csrf
                                         <div class="form-group">
                                             <input type="email" name="email" required class="form-control form-control-user" placeholder="Email Adresi Giriniz...">
                                         </div>

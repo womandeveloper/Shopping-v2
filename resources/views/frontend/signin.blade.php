@@ -10,7 +10,7 @@
                 @include('errors.alert')
                 @include('errors.errors')
                 <form action="{{ route('login') }}" method="POST">
-                    {{ csrf_field() }}
+                    @csrf
                     <div class="login-form">
                         <h4 class="login-title">Oturum Aç</h4>
                         <div class="row">

@@ -36,7 +36,7 @@
                                         <li>
                                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Çıkış Yap</a>
                                             <form id="logout-form" action="{{ route('checkout') }}" method="POST" style="display: none;">
-                                                {{ csrf_field() }}
+                                                @csrf
                                             </form>
                                         </li>
                                     </ul>
@@ -69,7 +69,7 @@
                 <div class="col-lg-9">
                     <!-- Begin Header Middle Searchbox Area -->
                     <form action="{{ route('product_search') }}" method="post" class="hm-searchbox">
-                        {{ csrf_field() }}
+                        @csrf
                         <select class="nice-select select-search-category">
                             <option value="0">All</option>
                             @isset($all_categories)

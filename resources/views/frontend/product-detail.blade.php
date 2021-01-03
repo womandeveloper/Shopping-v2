@@ -104,7 +104,7 @@
                         </div>
                         <div class="single-add-to-cart">
                             <form action="{{ route('shopping_add') }}" method="POST" class="cart-quantity">
-                                {{ csrf_field() }}
+                                @csrf
                                 <div class="quantity">
                                     <label>Quantity</label>
                                     <div class="cart-plus-minus">
@@ -211,7 +211,7 @@
                                 <div class="feedback">
                                     <h3 class="feedback-title">Geri Bildirim</h3>
                                     <form action="{{ route('commentSave') }}" method="POST">
-                                        {{ csrf_field() }}
+                                        @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <p class="your-opinion">
                                             <label>Değerlendirme</label>
