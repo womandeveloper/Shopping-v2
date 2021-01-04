@@ -1,4 +1,26 @@
 @extends('frontend.layouts.master')
+@section('head')
+<style>
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: .2;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  filter: alpha(opacity=50);
+  opacity: .5;
+}
+</style>
+@endsection
 @section('title', $product->product_name)
 @section('content')
 <!-- Begin Li's Breadcrumb Area -->
@@ -191,6 +213,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
+                <a href="#" class="close custom-modal-close-button m-2 text-white" data-dismiss="modal" aria-label="Close">&times;</a>
                 <h3 class="review-page-title">Yorum Yaz</h3>
                 <div class="modal-inner-area row">
                     <div class="col-lg-6">
@@ -214,7 +237,7 @@
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <p class="your-opinion">
-                                            <label>Değerlendirme</label>
+                                            <label>Değerlendir</label>
                                             <span>
                                                 <select class="star-rating" name="star_rating">
                                                     <option value="1">1</option>
@@ -227,12 +250,11 @@
                                         </p>
                                         <p class="feedback-form">
                                             <label for="feedback">Düşünceleriniz</label>
-                                            <textarea id="feedback" name="comment" cols="45" rows="8" aria-required="true"></textarea>
+                                            <textarea id="feedback" name="comment" required cols="45" rows="10" aria-required="true"></textarea>
                                         </p>
                                         <div class="feedback-input">
                                             <div class="feedback-btn pb-15">
-                                                <input class="form-control mb-2" type="submit" value="Gönder">
-                                                <input class="form-control" data-dismiss="modal" aria-label="Close" type="button" value="Kapat">
+                                                <input class="mb-2" type="submit" value="Gönder">
                                             </div>
                                         </div>
                                     </form>
